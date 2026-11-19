@@ -1,0 +1,485 @@
+/* ELYSIUM · capas propias sobre la plantilla roja:
+   1) botón de música en disco de vinilo, 2) álbum en carrusel 3D con espejo,
+   3) card de confirmación con pases (estilo boda-jenifer). */
+
+/* ── 1. VINILO ─────────────────────────────────────────── */
+.music-toggle {
+  width: 58px;
+  height: 58px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  filter: drop-shadow(0 6px 16px rgba(22, 22, 25, 0.55));
+  transition: transform 0.3s;
+}
+.music-toggle:active { transform: scale(0.92); }
+.music-toggle::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(228, 154, 177, 0.75);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s;
+}
+.music-toggle[aria-pressed="true"]::before {
+  opacity: 1;
+  animation: vinylRing 2.4s ease-out infinite;
+}
+@keyframes vinylRing {
+  0% { box-shadow: 0 0 0 0 rgba(228, 154, 177, 0.5); }
+  65% { box-shadow: 0 0 0 14px rgba(228, 154, 177, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(228, 154, 177, 0); }
+}
+.vinyl {
+  display: block;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.16) 0%, transparent 45%),
+    repeating-radial-gradient(circle at 50% 50%, #131316 0 2.6px, rgba(255, 255, 255, 0.07) 2.6px 3.1px),
+    #131316;
+  box-shadow: 0 0 0 1px rgba(228, 154, 177, 0.35);
+  animation: vinylSpin 3.8s linear infinite paused;
+}
+.music-toggle[aria-pressed="true"] .vinyl { animation-play-state: running; }
+@keyframes vinylSpin { to { transform: rotate(360deg); } }
+.vinyl-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 38% 35%, rgba(255, 255, 255, 0.35) 0%, transparent 55%),
+    conic-gradient(from 0deg, #8d2f4d, #ce4772 18%, #ebbbca 36%, #ce4772 54%, #8d2f4d 72%, #ce4772 90%, #ebbbca, #8d2f4d);
+  box-shadow: 0 0 0 1.5px rgba(228, 154, 177, 0.6), inset 0 1px 3px rgba(255, 255, 255, 0.3);
+}
+.vinyl-hole {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #131316;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+@media (prefers-reduced-motion: reduce) {
+  .vinyl, .music-toggle::before { animation: none !important; }
+}
+
+/* ── 2. CARRUSEL 3D CON ESPEJO ─────────────────────────── */
+.c3-gallery {
+  overflow: hidden;
+  --c3-w: clamp(112px, 30vw, 150px);
+  --c3-h: calc(var(--c3-w) * 1.45);
+  --c3-m: calc(var(--c3-h) * 0.42);
+}
+.c3-scene {
+  position: relative;
+  width: 100%;
+  height: calc(var(--c3-h) + var(--c3-m) + 60px);
+  margin: 26px auto 0;
+  perspective: 820px;
+  perspective-origin: 50% 28%;
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.c3-scene.c3-dragging { cursor: grabbing; }
+/* línea dorada del "piso" y resplandor bajo las fotos */
+.c3-scene::before {
+  content: "";
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  top: calc(24px + var(--c3-h) + 2px);
+  height: 1px;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(228, 154, 177, 0.5) 30%, rgba(244, 216, 225, 0.95) 50%, rgba(228, 154, 177, 0.5) 70%, transparent);
+}
+.c3-scene::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(24px + var(--c3-h) - 30px);
+  height: calc(var(--c3-m) + 70px);
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 60% 55% at 50% 40%, rgba(228, 154, 177, 0.18) 0%, rgba(161, 54, 88, 0.12) 45%, transparent 75%);
+}
+.c3-ring {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.c3-card {
+  position: absolute;
+  left: 50%;
+  top: 24px;
+  display: block;
+  width: var(--c3-w);
+  height: calc(var(--c3-h) + 6px + var(--c3-m));
+  margin-left: calc(var(--c3-w) / -2);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.c3-photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: var(--c3-h);
+  padding: 5px;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid rgba(228, 154, 177, 0.85);
+  background: linear-gradient(150deg, #35353c 0%, #1a1a1d 50%, #35353c 100%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5), 0 0 22px rgba(228, 154, 177, 0.18), 0 18px 34px rgba(0, 0, 0, 0.5);
+}
+.c3-card:focus-visible .c3-photo { box-shadow: 0 0 0 3px #e49ab1; }
+.c3-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  border-radius: 2px;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+/* brillo que cruza cada foto */
+.c3-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 35%, rgba(246, 222, 230, 0.16) 48%, transparent 60%);
+  transform: translateX(-120%);
+  animation: c3Sheen 6s ease-in-out infinite;
+}
+@keyframes c3Sheen {
+  0% { transform: translateX(-120%); }
+  55%, 100% { transform: translateX(120%); }
+}
+/* espejo: copia volteada que se desvanece con máscara (el fondo es satén, no color liso) */
+.c3-mirror {
+  position: relative;
+  display: block;
+  height: var(--c3-m);
+  margin-top: 4px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.55;
+  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.25) 45%, transparent 85%);
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.25) 45%, transparent 85%);
+}
+.c3-mirror .c3-photo {
+  transform: scaleY(-1);
+  box-shadow: none;
+}
+.c3-mirror .c3-photo::after { display: none; }
+.c3-hint {
+  margin: 4px 0 0;
+  font: 400 11px/1.6 var(--font-body);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--on-red-gold);
+}
+/* visor */
+.c3-lb {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 16px 72px;
+  background: rgba(18, 18, 21, 0.95);
+  touch-action: none;
+}
+.c3-lb[hidden] { display: none !important; }
+.c3-lb-fig {
+  margin: 0;
+  max-width: min(92vw, 720px);
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.c3-lb-img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 150px);
+  max-height: calc(100dvh - 150px);
+  object-fit: contain;
+  padding: 5px;
+  border: 1px solid rgba(228, 154, 177, 0.6);
+  border-radius: 4px;
+  background: #fff5e9;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  -webkit-user-select: none;
+}
+.c3-lb-close,
+.c3-lb-nav {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(228, 154, 177, 0.55);
+  background: rgba(18, 18, 21, 0.6);
+  color: #e49ab1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.c3-lb-close svg, .c3-lb-nav svg { width: 22px; height: 22px; }
+.c3-lb-close { top: 14px; right: 14px; }
+.c3-lb-prev { left: 10px; top: 50%; margin-top: -24px; }
+.c3-lb-next { right: 10px; top: 50%; margin-top: -24px; }
+.c3-lb-count {
+  position: absolute;
+  bottom: 22px;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  font: 500 14px/1 var(--font-body);
+  letter-spacing: 0.2em;
+  color: #fff5e9;
+}
+@media (prefers-reduced-motion: reduce) { .c3-photo::after { animation: none; } }
+
+/* ── 3. CARD DE CONFIRMACIÓN (estilo boda-jenifer) ─────── */
+.rsvp-section { padding: 78px 24px 74px; }
+.rsvp-card {
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 46px 24px 40px;
+  background: rgba(255, 249, 243, 0.95);
+  border: 1px solid rgba(206, 71, 114, 0.6);
+  box-shadow: 0 24px 60px rgba(22, 22, 25, 0.45);
+  color: var(--ink);
+}
+.rsvp-card::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(206, 71, 114, 0.35);
+  pointer-events: none;
+}
+.rsvp-corner { position: absolute; width: 44px; height: 44px; pointer-events: none; }
+.rsvp-corner--tl { top: 0; left: 0; }
+.rsvp-corner--tr { top: 0; right: 0; transform: scaleX(-1); }
+.rsvp-corner--bl { bottom: 0; left: 0; transform: scaleY(-1); }
+.rsvp-corner--br { bottom: 0; right: 0; transform: scale(-1, -1); }
+.rsvp-inner { position: relative; text-align: center; }
+.rsvp-ornament { display: block; width: min(220px, 70vw); height: auto; margin: 0 auto 20px; }
+.rsvp-eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  font: 400 10px/1.6 var(--font-body);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--rose-dark);
+}
+.rsvp-title {
+  margin: 0 0 12px;
+  font: 400 clamp(46px, 13vw, 58px)/1.05 var(--font-script);
+  letter-spacing: 0;
+  color: var(--rose);
+}
+.rsvp-text {
+  max-width: 330px;
+  margin: 0 auto 22px;
+  font: 400 16px/1.7 var(--font-body);
+  color: var(--muted);
+}
+.rsvp-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 260px;
+  margin: 0 auto 20px;
+}
+.rsvp-divider::before,
+.rsvp-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+.rsvp-divider-heart { flex-shrink: 0; color: var(--rose); }
+#rsvpPasesNote {
+  max-width: 330px;
+  margin: 0 auto 16px;
+  font: 600 21px/1.4 var(--font-display);
+  color: var(--rose-dark);
+}
+#rsvpPasesNote:empty { display: none; }
+.rsvp-pases-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 320px;
+  margin: 0 auto 22px;
+  padding: 14px 24px;
+  border: 1px solid rgba(206, 71, 114, 0.55);
+  border-radius: 12px;
+  background: rgba(206, 71, 114, 0.1);
+}
+.rsvp-pases-label {
+  font: 500 11px/1.4 var(--font-body);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #a12b50;
+}
+.rsvp-pases-num { font: 600 42px/1 var(--font-display); color: var(--rose); }
+.rsvp-toggle { display: flex; gap: 10px; max-width: 340px; margin: 0 auto 16px; }
+.rsvp-toggle-btn {
+  flex: 1;
+  min-height: 52px;
+  padding: 10px 8px;
+  border: 1.5px solid rgba(206, 71, 114, 0.6);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.75);
+  font: 500 15px/1.2 var(--font-body);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+.rsvp-toggle-btn.selected-yes { background: var(--rose); border-color: var(--rose); color: #fff5e9; }
+.rsvp-toggle-btn.selected-no { background: rgba(102, 87, 91, 0.12); border-color: var(--muted); color: var(--ink); }
+.rsvp-fields { display: flex; flex-direction: column; gap: 10px; max-width: 340px; margin: 0 auto 18px; }
+.rsvp-fields[hidden] { display: none; }
+.rsvp-input {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 16px;
+  border: 1.5px solid rgba(206, 71, 114, 0.6);
+  border-radius: 10px;
+  background: #fff;
+  font: 600 19px/1.2 var(--font-display);
+  color: var(--ink);
+  outline: none;
+}
+.rsvp-input::placeholder { color: #8b7b7f; font-weight: 500; font-style: italic; }
+.rsvp-input:focus { border-color: var(--rose); box-shadow: 0 0 0 3px rgba(161, 54, 88, 0.15); }
+.rsvp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 340px;
+  min-height: 56px;
+  margin: 0 auto;
+  padding: 16px 26px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #a13658, #44444d);
+  box-shadow: 0 10px 26px rgba(68, 68, 77, 0.35);
+  font: 500 13px/1 var(--font-body);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff5e9;
+  cursor: pointer;
+}
+.rsvp-btn.breathe { animation: rsvpBreathe 3.2s ease-in-out infinite; }
+@keyframes rsvpBreathe {
+  0%, 100% { transform: scale(1); box-shadow: 0 10px 26px rgba(68, 68, 77, 0.35); }
+  50% { transform: scale(1.025); box-shadow: 0 14px 34px rgba(68, 68, 77, 0.5); }
+}
+.rsvp-gracias {
+  max-width: 340px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  border: 1.5px solid rgba(206, 71, 114, 0.55);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.8);
+}
+.rsvp-gracias[hidden] { display: none; }
+.rsvp-gracias-icon { display: block; margin: 0 auto 10px; color: var(--rose); }
+.rsvp-gracias-title { margin: 0 0 8px; font: 600 23px/1.35 var(--font-display); color: var(--rose-dark); }
+.rsvp-gracias-sub { margin: 0 0 16px; font: 400 15px/1.6 var(--font-body); color: var(--muted); }
+.rsvp-editar-btn {
+  min-height: 46px;
+  padding: 10px 22px;
+  border: 1.5px solid rgba(206, 71, 114, 0.6);
+  border-radius: 999px;
+  background: transparent;
+  font: 500 13px/1 var(--font-body);
+  letter-spacing: 0.08em;
+  color: var(--rose-dark);
+  cursor: pointer;
+}
+#rsvp-feedback { min-height: 0; margin: 12px auto 0; font: 500 14px/1.5 var(--font-body); color: var(--rose); }
+#rsvp-feedback:empty { margin: 0; }
+.rsvp-deadline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  font: 600 16px/1.4 var(--font-display);
+  font-style: italic;
+  color: var(--rose-dark);
+}
+@media (prefers-reduced-motion: reduce) { .rsvp-btn.breathe { animation: none; } }
+.photo-credit{margin:14px auto 0;max-width:320px;font:400 10px/1.5 var(--font-body);letter-spacing:.04em;color:var(--on-red-muted);opacity:.7}
+
+
+/* ── Tintas que fluyen (estilo save the date Lekshmy, repintadas a vino/oro) ── */
+.section>.ink-bg{position:absolute!important;inset:0;z-index:-2!important;margin:0;max-width:none;overflow:hidden;pointer-events:none;
+  -webkit-mask-image:linear-gradient(transparent 0,#000 150px,#000 calc(100% - 150px),transparent);
+          mask-image:linear-gradient(transparent 0,#000 150px,#000 calc(100% - 150px),transparent)}
+.ink-bg>i{position:absolute;inset:-10%;background:center/cover no-repeat;opacity:.9;
+  animation:inkDrift 22s ease-in-out infinite alternate;will-change:transform}
+.ink-bg.flip>i{transform:scaleX(-1)}
+.ink-oval>i{inset:-6% -14%;background-size:100% 100%;opacity:.95}
+@keyframes inkDrift{
+  from{transform:translate3d(var(--ix,-4%),var(--iy,-3%),0) scale(1.02) rotate(var(--ir,-1.2deg)) scaleX(var(--fx,1))}
+  to{transform:translate3d(calc(var(--ix,-4%) * -1),calc(var(--iy,-3%) * -1),0) scale(1.16) rotate(calc(var(--ir,-1.2deg) * -1)) scaleX(var(--fx,1))}}
+.ink-bg.flip>i{--fx:-1}
+.ink-a>i{--ix:-4%;--iy:3%;--ir:1.2deg;animation-delay:0s}
+.ink-b>i{--ix:4%;--iy:-3%;--ir:-1.2deg;animation-delay:-5s}
+.ink-c>i{--ix:-3%;--iy:-4%;--ir:-1deg;animation-delay:-11s}
+.ink-d>i{--ix:4%;--iy:4%;--ir:1.2deg;animation-delay:-16s}
+.ink-e>i{--ix:-4%;--iy:-2%;--ir:.9deg;animation-delay:-8s}
+.ink-f>i{--ix:3%;--iy:4%;--ir:-1.2deg;animation-delay:-19s}
+.ink-g>i{--ix:-4%;--iy:4%;--ir:1deg;animation-delay:-3s}
+.ink-h>i{--ix:2%;--iy:-2%;--ir:-.8deg;animation-delay:-13s}
+/* halo para leer el texto marfil sobre la tinta */
+.family,.venues,.itinerario,.dress,.gifts,.album,.wishes{text-shadow:0 0 14px rgba(22, 22, 25, .55),0 1px 2px rgba(22, 22, 25, .35)}
+
+/* ── Tarjetas que levitan y ondean ── */
+@keyframes levitate{0%,100%{transform:translateY(0) rotate(-.6deg)}50%{transform:translateY(-9px) rotate(.6deg)}}
+.lev{animation:levitate 6.5s ease-in-out infinite}
+.lev-sway{transform-origin:50% 100%}
+.rule + .family-group .lev{animation-delay:-2.2s}
+.venue + .venue .lev{animation-delay:-4.1s}
+.lev-sway{animation-delay:-1.3s}
+
+@media (prefers-reduced-motion:reduce){.ink-bg>i,.lev{animation:none}}

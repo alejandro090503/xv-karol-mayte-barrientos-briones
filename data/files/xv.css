@@ -1,0 +1,334 @@
+/* LIDIA XV · ACABADOS ROJO RUBÍ.
+   Este archivo sólo adapta el diseño base; editar la paleta en data/set.css. */
+
+:root {
+  --xv-stage: #8c2f4c;
+  --xv-cream: #fff4e7;
+}
+
+body {
+  background: var(--outside);
+}
+@media (min-width: 700px) {
+  body {
+    background: radial-gradient(ellipse at 50% 10%, #4c4c55 0%, #1e1e22 74%);
+  }
+  .phone-preview-shell {
+    box-shadow: 0 20px 90px #0d0d0eb3;
+  }
+}
+
+/* Una portada fotográfica sin marco y con contraste para el nombre. */
+.hero {
+  background: var(--sage-dark);
+}
+.hero-vertical {
+  object-position: 50% 33%;
+}
+.hero-shade {
+  background: linear-gradient(
+    180deg,
+    #161619ba 0%,
+    #16161952 17%,
+    transparent 37%,
+    #16161955 65%,
+    #161619e8 100%
+  );
+}
+.hero-top {
+  top: 39px;
+  z-index: 3;
+}
+.hero-top .monogram {
+  font-size: 40px;
+  line-height: 1;
+  color: var(--xv-cream);
+  margin-bottom: 8px;
+}
+.hero-top .eyebrow {
+  font-size: 10px;
+  color: var(--xv-cream);
+}
+.hero-content {
+  bottom: 113px;
+  z-index: 3;
+}
+.hero-content > .eyebrow {
+  color: var(--xv-cream);
+}
+.hero h1 {
+  font-size: clamp(92px, 25vw, 118px);
+  line-height: 0.9;
+  margin: 9px 0 18px;
+  color: var(--xv-cream);
+}
+.hero-date {
+  color: var(--xv-cream);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+}
+.scroll-cue {
+  z-index: 5;
+  bottom: 57px;
+}
+.wave--rose {
+  color: var(--xv-stage);
+}
+
+/* La textura floral del demo base es muy oscura sobre el sobre claro. */
+.envelope-flap::after {
+  background-size: 48% auto;
+  background-position: 120% 1%;
+  opacity: 0.09;
+  filter: grayscale(1) brightness(2);
+}
+.envelope-ornament {
+  display: none;
+}
+
+/* Ramos compactos y retirados hacia fuera para dejar libre la lectura. */
+.photo--arch::after {
+  display: none;
+}
+.floral::before {
+  background-position: center;
+  background-size: contain;
+}
+.floral--left::before,
+.floral--date-bottom::before {
+  scale: -1 1;
+  transform-origin: 45% 70%;
+}
+.opening .floral--right {
+  right: -120px;
+  top: 15px;
+  width: 180px;
+  height: 214px;
+  transform: rotate(-21deg);
+}
+.photo-section .floral {
+  right: -95px;
+  bottom: -40px;
+  transform: rotate(-12deg);
+  width: 223px;
+  height: 264px;
+}
+.photo-section--intro .floral {
+  left: -110px;
+  right: auto;
+  bottom: 100px;
+  width: 180px;
+  height: 214px;
+  transform: rotate(21deg);
+}
+.floral--date-top {
+  right: -130px;
+  top: -95px;
+  transform: rotate(0);
+}
+.floral--date-bottom {
+  left: -120px;
+  bottom: -55px;
+  transform: rotate(0);
+}
+.floral--date-bottom::before {
+  background-image: var(--floral-image);
+}
+.date-section .floral {
+  width: 190px;
+  height: 200px;
+}
+/* El ramo puede cruzar la onda sin quedar debajo del fondo siguiente. */
+.date-section {
+  z-index: 5;
+}
+.gifts .floral {
+  right: -125px;
+  top: -140px;
+  transform: rotate(0);
+  width: 190px;
+  height: 214px;
+}
+.rsvp .floral--left {
+  left: -110px;
+  right: auto;
+  top: 15px;
+  bottom: auto;
+  width: 180px;
+  height: 214px;
+  opacity: 0.8;
+  transform: rotate(0);
+}
+.ending .floral {
+  width: 250px;
+  height: 200px;
+  margin-bottom: -13px;
+  transform: rotate(0);
+}
+.ending .floral::before {
+  background-image: var(--floral-bottom);
+}
+
+/* El rojo aparece en bloques grandes, con marfil para la lectura. */
+.opening h2 {
+  font-size: 43px;
+}
+.opening h2 em {
+  display: inline;
+  font-style: italic;
+}
+.signature {
+  font-size: 47px;
+}
+.photo-caption {
+  color: var(--rose-dark);
+}
+.date-section {
+  background: var(--xv-stage);
+  color: var(--ivory);
+}
+.date-section .calendar-actions .button--outline {
+  background: var(--paper);
+  color: var(--rose-dark);
+}
+.date-section .eyebrow,
+.date-note,
+.fecha-evento .numero {
+  color: var(--ivory);
+}
+.fecha-evento .side {
+  border-color: #f0cbd7bd;
+}
+.calendar-header::before,
+.calendar-header::after {
+  background: #f0cbd777;
+}
+.calendar-grid .weekday {
+  color: #f5dbe3;
+}
+.calendar-grid .selected {
+  color: var(--mark-color, var(--sage-dark));
+}
+.calendar-grid .selected::before {
+  background: var(--xv-cream);
+}
+.calendar-grid .selected::after {
+  border-color: var(--xv-cream);
+}
+.countdown-section {
+  background: var(--sage);
+}
+.countdown-section .eyebrow {
+  color: #f0ccd7;
+}
+.dress {
+  background: linear-gradient(155deg, #393941, #28282d);
+}
+.dress .script {
+  color: #edc1cf;
+}
+.dress-illustration {
+  width: 240px;
+  max-height: 270px;
+}
+.social {
+  background: var(--xv-stage);
+  color: var(--ivory);
+}
+.social .section-intro {
+  color: #ffece1;
+}
+.social .hashtag {
+  color: var(--xv-cream);
+}
+.social .button--outline {
+  border-color: #f6dee6;
+  color: var(--ivory);
+}
+.social .button--outline:hover {
+  background: #ffffff22;
+}
+.information {
+  background: var(--paper);
+}
+.information h3 {
+  color: var(--rose-dark);
+}
+
+/* Una línea fina da estructura al carrusel sin perder la sensación editorial. */
+.album-card img {
+  border: 1px solid #ffffff;
+  box-shadow: 0 7px 22px #36363d20;
+}
+.timeline-icon {
+  background: var(--rose-dark);
+}
+.button {
+  font-size: 12px;
+}
+.button--outline {
+  border-color: var(--rose-dark);
+}
+.music-toggle {
+  color: var(--rose-dark);
+}
+
+/* Pases simples visibles únicamente en index.php?nh=... */
+.sobre-sello-pase {
+  position: absolute;
+  z-index: 9;
+  left: 50%;
+  bottom: 15%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 50px);
+  padding: 6px 15px;
+  border: 1px solid #4d4d578c;
+  border-radius: 30px;
+  background: #fff9f3b8;
+  color: var(--envelope-ink);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+.section.pase {
+  padding-top: 48px;
+  padding-bottom: 51px;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.pase [data-icono="ticket"] {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 12px;
+  background: var(--rose-dark);
+  -webkit-mask: url("/Iconos/pase.png") center / contain no-repeat;
+  mask: url("/Iconos/pase.png") center / contain no-repeat;
+}
+.pase h2 {
+  font-size: 33px;
+  color: var(--rose-dark);
+}
+.pase p {
+  margin-top: 9px;
+  font-size: 16px;
+}
+
+@media (max-width: 374px) {
+  .hero h1 {
+    font-size: 91px;
+  }
+  .opening h2 {
+    font-size: 39px;
+  }
+  .date-section .floral {
+    opacity: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floral::before {
+    animation: none;
+  }
+}

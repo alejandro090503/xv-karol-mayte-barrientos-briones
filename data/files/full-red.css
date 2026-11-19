@@ -1,0 +1,349 @@
+/* LIDIA XV · ROJO DOMINANTE.
+   Capas: satén continuo, velo de contraste, contenido y ramos sueltos.
+   Editar colores/imagen/ritmo en ../set.css; modo imagen/video en <body>. */
+.phone-preview-stage {
+  background: var(--red-surface);
+  color: var(--on-red);
+}
+.phone-preview-stage > :not(.invitation-backdrop) {
+  position: relative;
+  z-index: 1;
+}
+/* La flor inferior cruza hacia el contador. Esta regla debe prevalecer
+   sobre la capa general de las secciones para que el fondo no la corte. */
+.phone-preview-stage > .date-section {
+  z-index: 2;
+}
+.invitation-backdrop {
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: min(100%, var(--page-width));
+  transform: translateX(-50%);
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--red-surface);
+}
+.invitation-backdrop__image,
+.invitation-backdrop__video {
+  position: absolute;
+  inset: -10%;
+  width: 120%;
+  height: 120%;
+  max-width: none;
+  object-fit: cover;
+}
+.invitation-backdrop__image {
+  background: var(--backdrop-image) center / cover no-repeat;
+  animation: red-satin-drift var(--backdrop-duration) ease-in-out infinite
+    alternate;
+  animation-play-state: paused;
+}
+.invitation-backdrop__video {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.invitation-backdrop[data-video-playing="true"] .invitation-backdrop__video {
+  opacity: 1;
+}
+.invitation-backdrop[data-moving="true"] .invitation-backdrop__image {
+  animation-play-state: running;
+}
+.invitation-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--backdrop-veil);
+}
+@keyframes red-satin-drift {
+  from {
+    transform: translateY(-3%) scale(1.03);
+  }
+  to {
+    transform: translateY(3%) scale(1.11);
+  }
+}
+
+/* Las secciones dejan ver la misma tela; los bloques oscuros dan ritmo. */
+.paper,
+.photo-section,
+.information {
+  background: transparent;
+}
+.paper::before {
+  display: none;
+}
+.opening {
+  background: linear-gradient(var(--red-surface), #3d3d4500 170px);
+}
+.date-section {
+  background: var(--red-surface);
+}
+.countdown-section,
+.dress {
+  background: var(--red-deep);
+}
+.dress {
+  --panel-color: var(--red-deep);
+}
+.social {
+  --panel-color: var(--red-surface);
+  background: var(--panel-color);
+}
+/* La parte rellena del SVG siempre toca el panel al que pertenece.
+   Arriba: relleno hacia abajo. Abajo: volteado, relleno hacia arriba.
+   Sobresalen sobre la tela; ningún rectángulo de otro color las respalda. */
+.section--wave-panel > .wave {
+  color: var(--panel-color);
+}
+.wave--panel-top {
+  top: calc(1px - var(--wave-height));
+  bottom: auto;
+  transform: none;
+}
+.wave--panel-bottom {
+  bottom: calc(1px - var(--wave-height));
+  top: auto;
+  transform: rotate(180deg);
+}
+.section.pase {
+  background: #222226ce;
+  border-color: #e49ab140;
+}
+.wave {
+  color: var(--red-surface);
+}
+.wave--sage {
+  color: var(--red-deep);
+}
+.wave--rose {
+  color: var(--red-surface);
+}
+.photo--arch::after {
+  display: none;
+}
+.hero-shade {
+  background: linear-gradient(
+    180deg,
+    #161619a6,
+    #16161915 35%,
+    #26262b44 65%,
+    #3d3d45ed
+  );
+}
+.section-intro,
+.venue p,
+.gift-option p,
+.form-note,
+.draft p,
+.site-footer,
+.site-footer__actions > a {
+  color: var(--on-red-muted);
+}
+.opening h2 em,
+.signature,
+.photo-caption,
+.family-group .eyebrow,
+.family-group .join,
+.venue .eyebrow,
+.venue .time,
+.itinerary h2 .script,
+.timeline-event time,
+.copy-status,
+.information h3,
+.ending .script,
+.pase h2,
+.site-footer__brand,
+.site-footer__replay,
+.google-photos h2 .script,
+.heart {
+  color: var(--on-red-gold);
+}
+.rule,
+.itinerary-list::before,
+.pase [data-icono="ticket"] {
+  background: var(--sage);
+}
+.venue + .venue,
+.gift-option,
+details,
+.information,
+.site-footer,
+.icon-button,
+.site-footer__replay {
+  border-color: #e49ab159;
+}
+.timeline-icon {
+  border-color: var(--red-surface);
+  background: #e499b1;
+}
+.timeline-icon::before {
+  background: #383840;
+}
+.dress-illustration {
+  color: var(--on-red-gold);
+}
+.dress .script {
+  color: var(--on-red-gold);
+}
+
+/* Un único recuadro claro realza la fecha, sin convertir la sección en marfil. */
+.calendar {
+  --calendar-ink: #35353c;
+  --calendar-selected-ink: #fff5e9;
+  padding: 23px 14px 20px;
+  border-radius: 150px 150px 12px 12px / 24px 24px 12px 12px;
+  background: #fff4e8;
+  color: var(--calendar-ink);
+  box-shadow: 0 12px 40px #15151830;
+}
+.calendar-header::before,
+.calendar-header::after {
+  background: #8a2e4b33;
+}
+.calendar-grid .weekday {
+  color: #44444d;
+}
+.calendar-grid .selected {
+  color: var(--mark-color, var(--calendar-selected-ink));
+}
+.calendar-grid .selected::before {
+  background: #9a3354;
+}
+.calendar-grid .selected::after {
+  border-color: #9a3354;
+}
+
+/* Controles legibles tanto antes como después de sus animaciones de entrada. */
+.button {
+  background: #ebb8c8;
+  border-color: #ebb8c8;
+  color: #323239;
+}
+.button:hover {
+  background: #f4dbe3;
+}
+.button--outline,
+.social .button--outline {
+  background: #22222638;
+  border-color: #e49ab1b3;
+  color: var(--on-red);
+}
+.button--outline:hover,
+.social .button--outline:hover {
+  background: #e49ab126;
+}
+input:not([type="radio"]):not([type="checkbox"]),
+textarea,
+select {
+  background: #fff5e9;
+  border-color: #e7a6ba;
+  color: #2b2b31;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #7d6465;
+}
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: #ce4671;
+}
+.music-toggle {
+  color: #3d3d45;
+}
+.lightbox {
+  color: #2b2b31;
+}
+.site-footer__replay:hover {
+  background: #e49ab126;
+}
+.site-footer__brand:hover,
+.site-footer__actions > a:hover {
+  color: #fff5e9;
+}
+
+/* Papel vino y sello metálico. Impresión floral discreta en cada pliegue. */
+.envelope-heading .script {
+  text-shadow: 0 2px 15px #16161966;
+}
+.envelope-letter,
+.sobre-sello-pase {
+  color: #3d3d45;
+}
+.envelope-flap::after,
+.envelope-side::after,
+.envelope-bottom::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--floral-image);
+  background-repeat: no-repeat;
+  opacity: var(--envelope-floral-opacity);
+  filter: grayscale(1) brightness(1.8);
+  mix-blend-mode: screen;
+}
+.envelope-flap::after {
+  background-size: 43% auto;
+  background-position: 100% 1%;
+}
+.envelope-side--left::after {
+  background-size: 50% auto;
+  transform: scaleX(-1);
+  /* El pliegue recorta su propio adorno al abrir el sobre. */
+  background-position: 125% 47%;
+}
+.envelope-side--right::after {
+  background-size: 50% auto;
+  background-position: 122% 58%;
+}
+.envelope-bottom::after {
+  background-image: var(--floral-bottom);
+  background-size: 45% auto;
+  background-position: 9% 95%;
+}
+.envelope-bottom-edge {
+  background: #ffffff0a;
+}
+.seal-button {
+  filter: drop-shadow(2px 7px 6px #16161980);
+}
+.envelope[data-seal-material="metal"] .seal-art {
+  filter: var(--seal-metal-filter);
+}
+.envelope[data-seal-material="metal"] .seal-art::after {
+  display: none; /* No multiplicar un tinte opaco sobre los reflejos metálicos. */
+}
+
+@media (max-width: 699px) {
+  body {
+    background: var(--red-surface);
+  }
+  .invitation-backdrop {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .invitation-backdrop__image {
+    animation: none;
+    transform: none;
+  }
+  .invitation-backdrop__video {
+    display: none;
+  }
+}
+
+/* KAROL MAYTE · detalles verdes (bordado charro): iconos, líneas y fechas del itinerario. */
+.gift-icon,
+.transfer-icon,
+.timeline-event time {
+  color: var(--sage);
+}
+.timeline-icon {
+  background: #f2d3dd;
+}
+.timeline-icon::before {
+  background: #2B2B2F;
+}

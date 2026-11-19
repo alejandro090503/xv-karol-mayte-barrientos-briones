@@ -1,0 +1,89 @@
+/* KAROL MAYTE XV · VARIABLES EDITABLES DEL DISEÑO.
+   Las fuentes se cargan desde este archivo (data/set.css).
+   Las URL guardadas en variables de imagen se resuelven desde las hojas que
+   las consumen en data/files/, por eso llevan un nivel relativo adicional. */
+
+/* Tipografía para títulos editoriales. */
+@font-face {
+  font-family: LidiaDisplay;
+  src: url("/Fuentes/CormorantGaramond/CormorantGaramond-Lidia.woff2")
+    format("woff2");
+  font-display: swap;
+}
+
+/* Tipografía caligráfica para nombres y acentos decorativos. */
+@font-face {
+  font-family: LidiaScript;
+  src: url("/Fuentes/MonteCarlo/MonteCarlo-Lidia.woff2")
+    format("woff2");
+  font-display: swap;
+}
+
+/* Tipografía de lectura para párrafos, botones y formularios. */
+@font-face {
+  font-family: LidiaBody;
+  src: url("/Fuentes/Tangerine/Jost/Jost-Lidia.woff2")
+    format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  /* PALETA */
+  --ivory: #fbf7f2; /* Fondo marfil y texto sobre fondos oscuros. */
+  --paper: #f3eef0; /* Superficies claras secundarias. */
+  --blush: #f2d3dd; /* Rosa tenue para transiciones y detalles. */
+  --rose: #B04A6E; /* Rosa de acentos y botones. */
+  --rose-dark: #45454B; /* Vino de textos destacados y estados de foco. */
+  --sage: #8DB596; /* Borgoña de las secciones oscuras. */
+  --sage-dark: #2B2B2F; /* Vino profundo para detalles y botones claros. */
+  --ink: #2B2B2F; /* Color principal de lectura sobre marfil. */
+  --muted: #5c5c63; /* Texto secundario sobre marfil. */
+  --gold: #8DB596; /* Verde salvia: líneas y detalles. */
+  --line: #d9d9de; /* Bordes y separadores. */
+  --outside: #1f1f23; /* Fondo visible fuera de la tarjeta en escritorio. */
+
+  /* ROJO DOMINANTE: superficies y contraste, independientes del sobre. */
+  --red-surface: #45454B; /* Gris de ondas y paneles. */
+  --red-deep: #2B2B2F; /* Gris profundo para bloques de énfasis. */
+  --on-red: #fbf7f2; /* Texto principal sobre rojo. */
+  --on-red-muted: #e6e3e6; /* Texto de lectura secundaria sobre rojo. */
+  --on-red-gold: #E9A8BC; /* Acento rosa sobre gris. */
+  --backdrop-image: url("/fondos/satin-gris.jpg"); /* Satén compartido; ruta desde full-red.css. */
+  --backdrop-veil: #2b2b2fa8; /* Velo vino para conservar el contraste. */
+  --backdrop-duration: 30s; /* Duración de cada recorrido vertical y zoom. */
+
+  /* TIPOGRAFÍA Y RITMO */
+  --font-display: LidiaDisplay, Georgia, serif; /* Familia de títulos. */
+  --font-script:
+    LidiaScript, cursive; /* Familia de nombres y frases caligráficas. */
+  --font-body: LidiaBody, Arial, sans-serif; /* Familia del texto de lectura. */
+  --text-size: 17px; /* Tamaño base de los párrafos. */
+  --text-small: 14px; /* Tamaño de notas y textos auxiliares. */
+  --title-size: 42px; /* Tamaño general de títulos h2. */
+  --script-size: 60px; /* Tamaño general de textos caligráficos. */
+  --page-width: 430px; /* Ancho máximo de la invitación en escritorio. */
+  --gutter: 32px; /* Espacio horizontal interno de cada sección. */
+  --section-space: 78px; /* Espacio vertical general de cada sección. */
+  --wave-height: 52px; /* Altura de las divisiones onduladas. */
+
+  /* TEXTURAS Y DECORACIONES */
+  --texture-paper: url("/Decoraciones/sobre/papel-lidia.jpg"); /* Textura del sobre y del papel interior. */
+  --floral-image: url("/Decoraciones/Sueltos/flores_rosa_salvia.png"); /* Ramo suelto rojo y dorado; no es un borde. */
+  --floral-bottom: url("/Decoraciones/Sueltos/flores_rosa_crema.png"); /* Ramo suelto vino y beige para el cierre y la impresión floral inferior del sobre. */
+  --seal-image: url("/Decoraciones/sobre/sello-metalico-dorado.png"); /* Sello metálico con transparencia y reflejos propios. */
+  --paper-grain: 0.25; /* Opacidad de la textura sobre las secciones claras: 0 a 1. */
+
+  /* SOBRE: los colores tiñen los recursos neutros sin perder su relieve.
+     Ideas: marfil #e8c9d3 / rosa #ebd6dd / salvia #b3bcaa / vino #9a6374. */
+  --envelope-color: #3a3a40; /* Color del papel exterior del sobre. */
+  --envelope-ink: #f6dbe4; /* Color de los textos del sobre. */
+  --seal-color: #E9A8BC; /* Tinte de respaldo si se cambia data-seal-material a wax; el metal usa su propio acabado. */
+  --seal-metal-filter: hue-rotate(325deg) saturate(.65) brightness(1.05); /* Metal: none = dorado; grayscale(1) brightness(1.12) = plata; hue-rotate(325deg) saturate(.65) = oro rosa. */
+  --envelope-floral-opacity: 0.09; /* Intensidad de los adornos impresos en los cuatro pliegues. */
+  --seal-size: 180px; /* Diámetro del botón con el sello. */
+
+  /* FOTOGRAFÍAS: cada <figure> puede sobrescribir --photo-position. */
+  --photo-position: 50% 45%; /* Encuadre predeterminado de fotos intermedias. */
+  --parallax-travel: 76; /* Recorrido inicial máximo del parallax, interpretado en píxeles por parallax.js. */
+}

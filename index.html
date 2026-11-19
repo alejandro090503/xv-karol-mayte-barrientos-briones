@@ -1,0 +1,825 @@
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- MARK: Metadatos — idioma, vista móvil y datos usados al compartir la invitación. -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#2B2B2F" />
+    <meta
+      name="description"
+      content="Mis XV años · Karol Mayte Barrientos Briones · Sábado 26 de diciembre de 2026. Acompáñame a celebrar este momento especial."
+    />
+    <meta property="og:title" content="Mis XV años · Karol Mayte" />
+    <meta
+      property="og:description"
+      content="Sábado 26 de diciembre de 2026 · Una invitación especial para ti."
+    />
+    <meta property="og:image" content="https://xv-karol-mayte-barrientos-briones.vercel.app/foto.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <!-- MARK: Metadatos de pases PHP — variante inactiva; activar sólo junto con el bloque PHP inicial.
+      <meta property="og:title" content="Mis XV - Karol Mayte">
+      <meta property="og:description" content="Elysium Invitaciones">
+    -->
+    <title>Karol Mayte · Mis XV años</title>
+    <!-- MARK: Recursos visuales — favicon, fuentes, hojas de estilo y scripts compartidos. -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%2344444d'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='28' fill='%23fff9f3'%3EXV%3C/text%3E%3C/svg%3E"
+    />
+    <link
+      rel="preload"
+      as="font"
+      href="./Fuentes/MonteCarlo/MonteCarlo-Lidia.woff2"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      href="./Fuentes/CormorantGaramond/CormorantGaramond-Lidia.woff2"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="data/set.css?v=20260930-3" />
+    <link rel="stylesheet" href="data/files/style.css?v=20261109-scroll" />
+    <link rel="stylesheet" href="data/files/envelope.css?v=20260927-3" />
+    <link rel="stylesheet" href="data/files/xv.css?v=20261014-sync1" />
+    <link rel="stylesheet" href="data/files/full-red.css?v=20260930-7" />
+    <link rel="stylesheet" href="data/files/elysium.css?v=3" />
+    <link rel="stylesheet" href="data/files/karol.css?v=1" />
+    <script defer src="./JS/gsap.min.js"></script>
+    <script defer src="./JS/ScrollTrigger.min.js"></script>
+    <script defer src="data/files/core.js?v=20261015-1"></script>
+    <script defer src="data/files/motion.js?v=20261109-scroll"></script>
+    <script defer src="data/files/parallax.js?v=20261014-sync1"></script>
+    <script defer src="data/files/background.js?v=20260930-2"></script>
+    <script defer src="data/files/envelope.js?v=20260930-4"></script>
+    <script defer src="data/files/elysium.js?v=2"></script>
+    <script defer src="data/files/karol.js?v=1"></script>
+  </head>
+  <!-- MARK: Configuración general — data-sobre="false" desactiva el sobre; data-event-offset = zona horaria
+       de Dolores Hidalgo, Gto. (centro de México). El RSVP va al panel de invitados, NO a WhatsApp. -->
+  <body data-sobre="true"
+    data-color-layout="full"
+    data-background-mode="image"
+    data-background-motion="true" data-festejados="Karol Mayte" data-event-offset="-06:00" data-guest-limit="16">
+    <!-- MARK: Biblioteca de curvas SVG — símbolos reutilizados como divisiones entre secciones. -->
+    <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <symbol id="wave-gentle" viewBox="0 0 430 64">
+          <path d="M0 27C93 69 138 3 232 24S354 69 430 23V64H0Z" />
+        </symbol>
+        <symbol id="wave-arc" viewBox="0 0 430 64">
+          <path d="M0 0C74 60 175 74 250 48S371 11 430 27V64H0Z" />
+        </symbol>
+        <symbol id="wave-paper" viewBox="0 0 430 64">
+          <path d="M0 32C40 29 52 45 95 40S157 29 192 39S241 47 277 35S321 30 355 40S404 38 430 30V64H0Z" />
+        </symbol>
+        <symbol id="icon-arrow-up-right" viewBox="0 0 24 24"><path d="M5 19 19 5M9 5h10v10" /></symbol>
+      </defs>
+    </svg>
+
+    <!-- MARK: Sobre de entrada — pliegues, carta, sello y gesto que abre la invitación; colores en data/set.css. -->
+    <div
+      id="sobre-sello"
+      class="envelope"
+      data-seal-material="metal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="envelope-title"
+      hidden
+    >
+      <div class="envelope-layer envelope-back"></div>
+      <div class="envelope-letter" aria-hidden="true">
+        <span class="eyebrow">Una noche para recordar</span>
+        <p class="script">Mis XV años</p>
+        <span class="rule"></span>
+        <p class="small">26 de diciembre de 2026</p>
+      </div>
+      <div class="envelope-layer envelope-side envelope-side--left"></div>
+      <div class="envelope-layer envelope-side envelope-side--right"></div>
+      <div class="envelope-layer envelope-bottom"></div>
+      <div class="envelope-bottom-edge"></div>
+      <div class="envelope-flap-wrap"><div class="envelope-layer envelope-flap"></div></div>
+      <div class="envelope-heading">
+        <span class="eyebrow">Mis quince años</span>
+        <p class="script" id="envelope-title">Karol Mayte</p>
+        <span class="envelope-date">26 · DICIEMBRE · 2026</span>
+      </div>
+      <div class="envelope-ornament" aria-hidden="true"></div>
+      <!-- MARK: Pase dentro del sobre — variante PHP activa. -->
+              <button class="seal-button" type="button" aria-label="Abrir invitación de XV años de Karol Mayte">
+        <span class="seal-art" aria-hidden="true"></span>
+      </button>
+      <div class="envelope-instruction">
+        <span class="eyebrow">Toca el sello para abrir</span>
+        <p>Quiero celebrar este sueño contigo</p>
+      </div>
+      <div class="envelope-bottom-copy">UNA INVITACIÓN PARA TI</div>
+    </div>
+
+    <!-- MARK: Contenedor de la invitación — limita el ancho de la página en escritorio. -->
+    <div class="phone-preview-shell">
+      <main class="phone-preview-stage" id="invitacion">
+        <!-- MARK: Fondo rojo continuo — imagen y movimiento en set.css. Para video,
+             usar data-background-mode="video" en body y una URL en data-src.
+             La imagen sigue visible si el video falla o se prefiere movimiento reducido. -->
+        <div class="invitation-backdrop" aria-hidden="true">
+          <div class="invitation-backdrop__image"></div>
+          <video class="invitation-backdrop__video" data-src="" muted loop playsinline preload="none" tabindex="-1"></video>
+        </div>
+        <!-- MARK: Portada o hero — nombre de la quinceañera, fecha, foto y señal para deslizar.
+             data-hero-mode admite video, vertical u horizontal; sólo el modo activo carga su medio. -->
+        <header class="hero" id="inicio" data-hero-mode="vertical" tabindex="-1">
+          <!-- MARK: Video de portada opcional — agregar un video de XV antes de activar este modo. -->
+          <video
+            class="hero-media hero-video"
+            data-hero-visual
+            data-src=""
+            data-video-ready="false"
+            poster="fondos/1.jpg"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="none"
+            aria-hidden="true"
+          ></video>
+          <!-- MARK: Foto vertical activa — retrato de Karol Mayte con traje de charra. -->
+          <img
+            class="hero-media hero-vertical"
+            data-hero-visual
+            data-src="fondos/1.jpg"
+            width="1200"
+            height="1800"
+            alt="Karol Mayte con su traje de charra rojo"
+          />
+          <!-- MARK: Foto horizontal alternativa — usar data-hero-mode="horizontal"; GSAP mueve suavemente esta imagen. -->
+          <img
+            class="hero-media hero-horizontal"
+            data-hero-visual
+            data-src="fondos/horizontal.jpg"
+            width="900"
+            height="600"
+            alt="Karol Mayte a caballo con su traje de charra"
+          />
+          <!-- MARK: Textos de portada — velo de contraste, monograma, nombres y fecha. -->
+          <div class="hero-shade"></div>
+          <div class="hero-top">
+            <span class="monogram">XV</span>
+            <span class="eyebrow">Una noche para recordar</span>
+          </div>
+          <div class="hero-content">
+            <span class="eyebrow">Mis quince años</span>
+            <h1>
+              <span class="hero-name">Karol</span>
+              <span class="hero-name">Mayte</span>
+            </h1>
+            <p class="hero-date">26 · DICIEMBRE · 2026</p>
+          </div>
+          <!-- MARK: Cierre de portada — curva animada y enlace que invita a deslizar. -->
+          <svg
+            class="wave wave--bottom wave--hero"
+            viewBox="0 0 430 64"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path data-cloud-wave d="M0 0C74 60 175 74 250 48S371 11 430 27V64H0Z" />
+          </svg>
+          <a class="scroll-cue" href="#bienvenidos">
+            Descubre mi invitación
+            <span aria-hidden="true">↓</span>
+          </a>
+        </header>
+
+        <!-- MARK: Bienvenida — invitación a los quince años y firma de Karol Mayte. -->
+        <section class="section paper opening" id="bienvenidos">
+          <div class="floral floral--right" data-drift aria-hidden="true"></div>
+          <span class="eyebrow" data-reveal>Un sueño hecho realidad</span>
+          <h2 data-reveal>
+            Hay momentos que
+            <br />
+            brillan <em>para siempre.</em>
+          </h2>
+          <span class="rule" aria-hidden="true"></span>
+          <p class="section-intro" data-reveal>
+            Mis XV años serán un sueño hecho realidad, y quiero que formes parte de este capítulo único en mi vida.
+          </p>
+          <p class="section-intro" data-reveal>Acompáñame a celebrar una noche llena de alegría, música y recuerdos.</p>
+          <p class="script signature" data-reveal>Con cariño, Karol Mayte</p>
+        </section>
+
+        <!-- MARK: Foto intermedia 1 — retrato con marco de arco, parallax y frase breve. -->
+        <div class="photo-section photo-section--intro">
+          <figure class="photo-frame photo--arch" data-parallax style="--photo-position: 50% 50%">
+            <img
+              src="fondos/2.jpg"
+              width="800"
+              height="1200"
+              loading="lazy"
+              decoding="async"
+              alt="Karol Mayte con su sombrero de charra"
+            />
+          </figure>
+          <div class="floral floral--left" data-drift aria-hidden="true"></div>
+          <p class="photo-caption">Un día para soñar</p>
+        </div>
+
+        <!-- MARK: Familia y padrinos — PENDIENTE: nombres de papás y padrinos (por confirmar con el cliente). -->
+        <section class="section paper family" id="familia">
+          <div class="ink-bg ink-a" aria-hidden="true"><i style="background-image:url(/ink/top.webp)"></i></div>
+          <span class="eyebrow" data-reveal>Quienes hacen posible este sueño</span>
+          <h2 data-reveal>
+            Con el amor
+            <br />
+            de mi familia
+          </h2>
+          <div class="family-group" data-reveal><div class="lev">
+            <span class="eyebrow">Mis padres</span>
+            <p class="por-confirmar">Por confirmar</p></div>
+          </div>
+          <span class="rule" aria-hidden="true"></span>
+          <div class="family-group" data-reveal><div class="lev">
+            <span class="eyebrow">Mis padrinos</span>
+            <p class="por-confirmar">Por confirmar</p></div>
+          </div>
+          <svg
+            class="wave wave--bottom wave--rose"
+            viewBox="0 0 430 64"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <use href="#wave-gentle" />
+          </svg>
+        </section>
+
+        <!-- MARK: Fecha y calendario — día central, calendario construido por core.js y adornos florales. -->
+        <section class="section date-section" id="fecha">
+          <div class="floral floral--date-top" aria-hidden="true"></div>
+          <div class="floral floral--date-bottom" aria-hidden="true"></div>
+          <span class="eyebrow" data-reveal>Reserva este día para mí</span>
+          <h2 data-reveal>
+            Una fecha,
+            <br />
+            mil emociones
+          </h2>
+          <!-- MARK: Fuente de fecha — calendario, día de semana y contador leen estos IDs;
+               hora-evento permanece aquí aunque se retire la sección de ceremonia. -->
+          <div class="fecha-evento" data-reveal>
+            <span class="side" id="dia-semana">Sábado</span>
+            <div class="centro">
+              <div class="numero" id="dia-mes">26</div>
+              <div class="anio" id="anio-evento">2026</div>
+            </div>
+            <span class="side" id="mes-evento">Diciembre</span>
+          </div>
+          <!-- PENDIENTE: hora real de la misa; mientras tanto el contador cuenta hasta el inicio del día. -->
+          <time id="hora-evento" class="sr-only">12:00 AM</time>
+          <div class="calendar" data-reveal>
+            <div class="calendar-header" id="calendar-title">Diciembre</div>
+            <div
+              class="calendar-grid"
+              id="calendar-grid"
+              role="group"
+              aria-label="Calendario de diciembre de 2026"
+            ></div>
+          </div>
+          <p class="date-note">El día en que celebraré mis quince años.</p>
+          <!-- MARK: Guardar la fecha — Google abre un evento editable; Apple recibe un archivo iCalendar. -->
+          <div class="calendar-actions" role="group" aria-label="Guardar la fecha en tu calendario">
+            <span class="calendar-actions__label">Guarda la fecha</span>
+            <div class="calendar-actions__links">
+              <a class="button button--outline" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=XV%20de%20Karol%20Mayte&amp;dates=20261226%2F20261227&amp;details=XV%20a%C3%B1os%20de%20Karol%20Mayte%20Barrientos%20Briones.%20Recepci%C3%B3n%20en%20Hotel%20Casa%20Pozo%20del%20Rayo%2C%20Dolores%20Hidalgo.%20Horarios%20por%20confirmar.&amp;location=Hotel%20Casa%20Pozo%20del%20Rayo%2C%20Nuevo%20Le%C3%B3n%207%2C%20Zona%20Centro%2C%2037800%20Dolores%20Hidalgo%2C%20Gto.&amp;ctz=America%2FMexico_City" target="_blank" rel="noopener noreferrer">
+                Google Calendar
+                <svg class="calendar-actions__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M7 3v4M17 3v4M3 10h18" /></svg>
+              </a>
+              <a class="button button--outline" href="data/evento.ics" type="text/calendar">
+                Apple Calendar
+                <svg class="calendar-actions__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M7 3v4M17 3v4M3 10h18" /></svg>
+              </a>
+            </div>
+          </div>
+        </section>
+        <!-- MARK: Cuenta regresiva — cuatro valores calculados por core.js hasta la fecha del evento. -->
+        <section class="section countdown-section">
+          <svg
+            class="wave wave--top wave--rose"
+            viewBox="0 0 430 64"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <use href="#wave-paper" />
+          </svg>
+          <span class="eyebrow">Cada vez falta menos</span>
+          <h2>
+            Contando los días
+            <br />
+            para verte
+          </h2>
+          <div class="countdown" role="timer" aria-label="Tiempo para los XV años de Karol Mayte">
+            <div class="time-block">
+              <span class="time-number" id="countdown-dias">—</span>
+              <span class="time-label">DÍAS</span>
+            </div>
+            <div class="time-block">
+              <span class="time-number" id="countdown-horas">—</span>
+              <span class="time-label">HORAS</span>
+            </div>
+            <div class="time-block">
+              <span class="time-number" id="countdown-minutos">—</span>
+              <span class="time-label">MINUTOS</span>
+            </div>
+            <div class="time-block">
+              <span class="time-number" id="countdown-segundos">—</span>
+              <span class="time-label">SEGUNDOS</span>
+            </div>
+          </div>
+          <p id="countdown-status" class="countdown-status"></p>
+        </section>
+
+        <!-- MARK: Foto intermedia 2 — imagen con borde ondulado y efecto parallax. -->
+        <div class="photo-section">
+          <figure class="photo-frame photo--wave" data-parallax style="--photo-position: 50% 48%">
+            <img
+              src="fondos/3.jpg"
+              width="1200"
+              height="1800"
+              loading="lazy"
+              decoding="async"
+              alt="Karol Mayte montando con su traje de charra"
+            />
+          </figure>
+        </div>
+
+        <!-- MARK: Ubicaciones — lugares, horarios, fotografías y enlaces de mapas. -->
+        <section class="section paper venues" id="ubicaciones">
+          <div class="ink-bg ink-b flip" aria-hidden="true"><i style="background-image:url(/ink/hero.webp)"></i></div>
+          <span class="eyebrow" data-reveal>Los lugares donde celebraremos</span>
+          <h2 data-reveal>
+            Nos vemos
+            <br />
+            <span class="script">aquí</span>
+          </h2>
+          <!-- MARK: Ceremonia — parroquia, hora y botón para abrir su mapa. -->
+          <!-- PENDIENTE: templo, dirección, hora y link de Google Maps de la misa. -->
+          <article class="venue venue--pendiente" data-reveal><div class="lev">
+            <span class="venue-icon" aria-hidden="true" style="--event-icon:url('/Iconos/Itinerario/iglesia.png')"></span>
+            <span class="eyebrow">Misa de XV años</span>
+            <h3>Templo por confirmar</h3>
+            <p>Dolores Hidalgo, Gto.</p>
+            <div class="time">Hora por confirmar</div>
+            <span class="button button--outline button--soon" aria-disabled="true">Ubicación próximamente</span></div>
+          </article>
+          <!-- MARK: Recepción — salón, hora y botón para abrir su mapa. -->
+          <article class="venue" data-reveal><div class="lev">
+            <img
+              class="venue-photo"
+              src="data/ubicaciones/recepcion-pozo-del-rayo.jpg"
+              width="648"
+              height="284"
+              loading="lazy"
+              decoding="async"
+              alt="Patio con el pozo de piedra del Hotel Casa Pozo del Rayo"
+            />
+            <span class="eyebrow">Recepción</span>
+            <h3>
+              Hotel Casa
+              <br />
+              Pozo del Rayo
+            </h3>
+            <p>
+              Nuevo León 7, Zona Centro,
+              <br />
+              37800 Dolores Hidalgo, Gto.
+            </p>
+            <div class="time">Hora por confirmar</div>
+            <a
+              class="button button--outline"
+              href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Casa+Pozo+del+Rayo%2C+Nuevo+Le%C3%B3n+7%2C+Zona+Centro%2C+37800+Dolores+Hidalgo%2C+Gto."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Cómo llegar
+              <svg class="button__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <use href="#icon-arrow-up-right" />
+              </svg>
+            </a></div>
+          </article>
+        </section>
+
+        <!-- MARK: Foto intermedia 3 — retrato desfasado dentro de un marco exterior. -->
+        <div class="photo-section photo-section--offset">
+          <figure class="photo-frame photo--offset" data-parallax style="--photo-position: 50% 47%">
+            <img
+              src="fondos/4.jpg"
+              width="1280"
+              height="1920"
+              loading="lazy"
+              decoding="async"
+              alt="Karol Mayte con su traje de charra negro y rosa"
+            />
+          </figure>
+        </div>
+
+        <!-- MARK: Itinerario — core.js crea las actividades usando la lista eventos de abajo. -->
+        <section class="section paper itinerary itinerario" id="itinerario">
+          <div class="ink-bg ink-c" aria-hidden="true"><i style="background-image:url(/ink/corner.webp)"></i></div>
+          <span class="eyebrow" data-reveal>Así celebraremos</span>
+          <h2 data-reveal>
+            Un día para
+            <br />
+            <span class="script">recordar</span>
+          </h2>
+          <div
+            class="itinerary-list"
+            data-icon-base="./Iconos/Itinerario"
+            aria-label="Programa de los quince años de Karol Mayte"
+          ></div>
+          <noscript>
+            <p>
+              Misa · Recepción · Vals · Cena · Baile — horarios por confirmar.
+            </p>
+          </noscript>
+        </section>
+        <!-- MARK: Datos del itinerario — editar nombre, hora e icono; cada icono existe en Iconos/Itinerario. -->
+        <script>
+          // PENDIENTE: horarios reales del itinerario (por confirmar con el cliente).
+          const eventos = [
+            { nombre: "Misa", hora: "Por confirmar", icono: "iglesia" },
+            { nombre: "Recepción", hora: "Por confirmar", icono: "recepcion" },
+            { nombre: "Vals", hora: "Por confirmar", icono: "vals" },
+            { nombre: "Cena", hora: "Por confirmar", icono: "cena" },
+            { nombre: "Baile", hora: "Por confirmar", icono: "baile" },
+          ];
+        </script>
+        <!-- MARK: Código de vestimenta — textos literales enviados por el cliente. -->
+        <section class="section dress section--wave-panel" id="vestimenta">
+          <div class="ink-bg ink-d flip" aria-hidden="true"><i style="background-image:url(/ink/footer.webp)"></i></div>
+          <svg class="wave wave--panel-top" viewBox="0 0 430 64" preserveAspectRatio="none" data-wave-motion aria-hidden="true">
+            <use href="#wave-gentle" />
+          </svg>
+          <span class="eyebrow" data-reveal>Código de vestimenta</span>
+          <h2 data-reveal>
+            Elegancia en
+            <br />
+            cada detalle
+          </h2>
+          <p class="script" data-reveal>Formal</p>
+          <div class="lev lev-sway"><img
+            class="dress-illustration"
+            data-svg-inline
+            src="./Iconos/vestimenta-xv-lidia.svg"
+            alt=""
+            aria-hidden="true"
+          /></div>
+          <p class="attire-note">Mujeres: Vestido largo.<br />Hombres: Traje con corbata o moño.</p>
+          <p class="small">¡No olvides tu abrigo!, puede bajar la temperatura en la madrugada.</p>
+          <svg class="wave wave--panel-bottom" viewBox="0 0 430 64" preserveAspectRatio="none" aria-hidden="true" data-wave-motion>
+            <use href="#wave-gentle" />
+          </svg>
+        </section>
+
+        <!-- MARK: Regalos — mesa de regalos, lluvia de sobres y datos para transferencia. -->
+        <section class="section paper gifts" id="regalos">
+          <div class="ink-bg ink-e flip" aria-hidden="true"><i style="background-image:url(/ink/top.webp)"></i></div>
+          <div class="floral" aria-hidden="true"></div>
+          <span class="eyebrow" data-reveal>Detalles con cariño</span>
+          <h2 data-reveal>
+            Tu presencia es
+            <br />
+            mi mejor regalo
+          </h2>
+          <p class="section-intro" data-reveal>
+            Tu compañía es lo que más deseo. Si quieres darme un detalle, te comparto estas opciones:
+          </p>
+          <div class="gift-options">
+            <!-- MARK: Mesa de regalos — PENDIENTE enlace del cliente. -->
+            <div class="gift-option" data-reveal>
+              <img
+                class="gift-icon"
+                data-svg-inline
+                src="./Iconos/regalo-lidia.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <h3>Mesa de regalos</h3>
+              <!-- PENDIENTE: tienda y número de evento de la mesa de regalos. -->
+              <p class="por-confirmar">Por confirmar</p>
+            </div>
+            <!-- MARK: Lluvia de sobres — explica la opción de regalo en efectivo. -->
+            <div class="gift-option" data-reveal>
+              <img
+                class="gift-icon"
+                data-svg-inline
+                src="./Iconos/lluvia-sobres-lidia.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <h3>Lluvia de sobres</h3>
+              <p>Es la tradición de regalar dinero en efectivo dentro de un sobre.</p>
+            </div>
+          </div>
+          <!-- MARK: Transferencia — panel desplegable; datos por confirmar. -->
+          <details>
+            <summary>
+              <span class="summary-label">
+                <img
+                  class="transfer-icon"
+                  data-svg-inline
+                  src="./Iconos/transferencia-lidia.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+                Datos para transferencia
+              </span>
+            </summary>
+            <!-- PENDIENTE: titular, banco y CLABE/cuenta. Al tenerlos, restaurar #bank-account + botón #copy-account. -->
+            <div class="bank-details">
+              <p class="por-confirmar">Por confirmar</p>
+              <p class="small">Compartiremos los datos muy pronto.</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- MARK: Foto intermedia 4 — retrato con bordes suaves y frase breve. -->
+        <div class="photo-section">
+          <figure class="photo-frame photo--soft" data-parallax style="--photo-position: 50% 50%">
+            <img
+              src="fondos/5.jpg"
+              width="1200"
+              height="1800"
+              loading="lazy"
+              decoding="async"
+              alt="Karol Mayte con su vestido de escaramuza blanco"
+            />
+          </figure>
+          <p class="photo-caption">Un recuerdo para siempre</p>
+        </div>
+
+        <!-- MARK: Álbum — carrusel 3D con reflejo (c3-), giro automático + arrastre + visor propio. -->
+        <section class="section paper album c3-gallery" id="album">
+          <div class="ink-bg ink-f" aria-hidden="true"><i style="background-image:url(/ink/hero.webp)"></i></div>
+          <span class="eyebrow" data-reveal>Instantes de un sueño</span>
+          <h2 data-reveal>Mi álbum</h2>
+          <div class="c3-scene" id="c3Scene">
+            <div class="c3-ring" id="c3Ring">
+              <button class="c3-card" type="button" data-i="0" aria-label="Ver foto 1 de 7">
+                <span class="c3-photo"><img src="album/1.jpg" alt="Karol Mayte, foto 1" decoding="async" draggable="false"></span>
+                <span class="c3-mirror" aria-hidden="true"><span class="c3-photo"><img src="album/1.jpg" alt="" decoding="async" draggable="false"></span></span>
+              </button>
+              <button class="c3-card" type="button" data-i="1" aria-label="Ver foto 2 de 7">
+                <span class="c3-photo"><img src="album/2.jpg" alt="Karol Mayte, foto 2" decoding="async" draggable="false"></span>
+                <span class="c3-mirror" aria-hidden="true"><span class="c3-photo"><img src="album/2.jpg" alt="" decoding="async" draggable="false"></span></span>
+              </button>
+              <button class="c3-card" type="button" data-i="2" aria-label="Ver foto 3 de 7">
+                <span class="c3-photo"><img src="album/3.jpg" alt="Karol Mayte, foto 3" decoding="async" draggable="false"></span>
+                <span class="c3-mirror" aria-hidden="true"><span class="c3-photo"><img src="album/3.jpg" alt="" decoding="async" draggable="false"></span></span>
+              </button>
+              <button class="c3-card" type="button" data-i="3" aria-label="Ver foto 4 de 7">
+                <span class="c3-photo"><img src="album/4.jpg" alt="Karol Mayte, foto 4" decoding="async" draggable="false"></span>
+                <span class="c3-mirror" aria-hidden="true"><span class="c3-photo"><img src="album/4.jpg" alt="" decoding="async" draggable="false"></span></span>
+              </button>
+              <button class="c3-card" type="button" data-i="4" aria-label="Ver foto 5 de 7">
+                <span class="c3-photo"><img src="album/5.jpg" alt="Karol Mayte, foto 5" decoding="async" draggable="false"></span>
+                <span class="c3-mirror" aria-hidden="true"><span class="c3-photo"><img src="album/5.jpg" alt="" decoding="async" draggable="false"></span></span>
+              </button>
+              <button class="c3-card" type="button" data-i="5" aria-label="Ver foto 6 de 7">
+                <span class="c3-photo"><img src="album/6.jpg" alt="Karol Mayte, foto 6" decoding="async" draggable="false"></span>
+                <span class="c3-mirror" aria-hidden="true"><span class="c3-photo"><img src="album/6.jpg" alt="" decoding="async" draggable="false"></span></span>
+              </button>
+              <button class="c3-card" type="button" data-i="6" aria-label="Ver foto 7 de 7">
+                <span class="c3-photo"><img src="album/7.jpg" alt="Karol Mayte, foto 7" decoding="async" draggable="false"></span>
+                <span class="c3-mirror" aria-hidden="true"><span class="c3-photo"><img src="album/7.jpg" alt="" decoding="async" draggable="false"></span></span>
+              </button>
+            </div>
+          </div>
+          <p class="c3-hint">Desliza para girar · toca una foto</p>
+        </section>
+
+        <!-- MARK: Google Fotos — sección opcional para que invitados suban sus fotos.
+             Sustituir el enlace por el álbum compartido del evento antes de activar.
+        <section class="section paper google-photos" id="google-fotos">
+          <span class="eyebrow" data-reveal>Guarda cada instante</span>
+          <img class="google-photos__icon" src="./Iconos/camara.png" alt="" aria-hidden="true" loading="lazy" />
+          <h2 data-reveal>Comparte tus<br /><span class="script">momentos</span></h2>
+          <p class="section-intro">Ayúdanos a guardar los recuerdos de este día. Sube tus fotos y videos a nuestro álbum compartido.</p>
+          <img class="google-photos__qr" src="data/google-fotos-qr.png" alt="Código QR del álbum compartido de Karol Mayte" loading="lazy" />
+          <a class="button button--outline" href="URL_DEL_ALBUM_DE_XV" target="_blank" rel="noopener noreferrer">Abrir Google Fotos <svg class="button__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#icon-arrow-up-right" /></svg></a>
+        </section>
+        -->
+
+        <!-- MARK: Instagram — hashtag y enlace para compartir fotografías del evento. -->
+        <section class="section social section--wave-panel">
+          <svg class="wave wave--panel-top" viewBox="0 0 430 64" preserveAspectRatio="none" aria-hidden="true" data-wave-motion>
+            <use href="#wave-gentle" />
+          </svg>
+          <span class="eyebrow" data-reveal>Recuerdos para compartir</span>
+          <h2 data-reveal>
+            Comparte
+            <br />
+            los recuerdos
+          </h2>
+          <p class="section-intro">
+            Me encantará ver la fiesta a través de tus ojos. Comparte tus fotos con mi hashtag.
+          </p>
+          <p class="hashtag">#XVKarolMayte2026</p>
+          <a
+            class="button button--outline"
+            href="https://www.instagram.com/explore/tags/xvkarolmayte2026/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ver en Instagram
+            <svg class="button__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <use href="#icon-arrow-up-right" />
+            </svg>
+          </a>
+          <svg
+            class="wave wave--panel-bottom"
+            viewBox="0 0 430 64"
+            preserveAspectRatio="none"
+            data-wave-motion
+            aria-hidden="true"
+          >
+            <use href="#wave-gentle" />
+          </svg>
+        </section>
+
+        <!-- MARK: Información adicional — aviso de solo adultos (sección obligatoria Elysium). -->
+        <section class="section information">
+          <span class="eyebrow" data-reveal>Un detalle importante</span>
+          <h3 data-reveal>Para disfrutar la celebración</h3>
+          <p>
+            Con mucho cariño, esta celebración será solo para adultos.
+            Gracias por comprender.
+          </p>
+        </section>
+
+        <!-- MARK: Pase dentro de la invitación — variante PHP activa. -->
+        
+        <!-- MARK: Confirmación RSVP — card con pases; envía la respuesta al Panel de Invitados
+             (panel-invitados.vercel.app/api/confirmar). Link personalizado: ?para=Familia%20Pérez&pases=3 -->
+        <section class="section rsvp-section" id="confirmacion">
+          <div class="ink-bg ink-h ink-oval" aria-hidden="true"><i style="background-image:url(/ink/oval.webp)"></i></div>
+          <div class="rsvp-card" data-reveal>
+            <svg class="rsvp-corner rsvp-corner--tl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#8DB596" stroke-width=".9" opacity=".8"/><circle cx="2" cy="2" r="2.5" fill="#e49ab1"/></svg>
+            <svg class="rsvp-corner rsvp-corner--tr" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#8DB596" stroke-width=".9" opacity=".8"/><circle cx="2" cy="2" r="2.5" fill="#e49ab1"/></svg>
+            <svg class="rsvp-corner rsvp-corner--bl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#8DB596" stroke-width=".9" opacity=".8"/><circle cx="2" cy="2" r="2.5" fill="#e49ab1"/></svg>
+            <svg class="rsvp-corner rsvp-corner--br" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#8DB596" stroke-width=".9" opacity=".8"/><circle cx="2" cy="2" r="2.5" fill="#e49ab1"/></svg>
+            <div class="rsvp-inner">
+              <svg class="rsvp-ornament" viewBox="0 0 320 56" fill="none" aria-hidden="true">
+                <g stroke="#8DB596" stroke-width=".9" fill="none">
+                  <path d="M18 28 Q50 10 82 28 Q106 42 130 28"/>
+                  <path d="M190 28 Q214 42 238 28 Q270 10 302 28"/>
+                  <circle cx="160" cy="28" r="5.5"/>
+                  <circle cx="160" cy="28" r="2" fill="#a13658" stroke="none"/>
+                  <path d="M154 20 Q160 13 166 20" opacity=".6"/>
+                  <path d="M154 36 Q160 43 166 36" opacity=".6"/>
+                </g>
+              </svg>
+              <span class="rsvp-eyebrow">Confirmación</span>
+              <h2 class="rsvp-title">¿Me acompañas?</h2>
+              <p class="rsvp-text">Me hará muy feliz compartir este día contigo. Confírmame tu asistencia para preparar todo con mucho cariño.</p>
+              <div class="rsvp-divider"><svg class="rsvp-divider-heart" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg></div>
+              <p id="rsvpPasesNote"></p>
+              <div class="rsvp-pases-display">
+                <div class="rsvp-pases-label">Pases reservados</div>
+                <div class="rsvp-pases-num" id="rsvp-pases-num">1</div>
+              </div>
+              <div id="rsvp-bandeja">
+                <div class="rsvp-toggle">
+                  <button class="rsvp-toggle-btn" id="btnYes" type="button">Asistiré</button>
+                  <button class="rsvp-toggle-btn" id="btnNo" type="button">No podré asistir</button>
+                </div>
+                <div class="rsvp-fields" id="namesContainer" hidden></div>
+                <button class="rsvp-btn breathe" id="btnEnviar" type="button"><span id="rsvp-btn-text">Confirmar asistencia</span></button>
+              </div>
+              <div class="rsvp-gracias" id="rsvp-gracias" hidden>
+                <svg class="rsvp-gracias-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.5 11 15 16 9.5"/></svg>
+                <p class="rsvp-gracias-title" id="rsvp-gracias-title"></p>
+                <p class="rsvp-gracias-sub" id="rsvp-gracias-sub"></p>
+                <button class="rsvp-editar-btn" id="rsvp-editar-btn" type="button">Modificar mi respuesta</button>
+              </div>
+              <p id="rsvp-feedback" aria-live="polite"></p>
+              <div class="rsvp-deadline">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+                <span id="rsvp-deadline-text">Confirma tu asistencia lo antes posible</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- MARK: Foto intermedia 5 — imagen final con cierre redondeado. -->
+        <div class="photo-section">
+          <figure class="photo-frame photo--closing" data-parallax style="--photo-position: 50% 48%">
+            <img
+              src="fondos/6.jpg"
+              width="1200"
+              height="1800"
+              loading="lazy"
+              decoding="async"
+              alt="Karol Mayte con su pastel de quince años"
+            />
+          </figure>
+        </div>
+        <!-- MARK: Despedida — agradecimiento final, nombres y fecha. -->
+        <section class="section paper ending">
+          <span class="eyebrow" data-reveal>Una noche para atesorar</span>
+          <p class="script" data-reveal>
+            Gracias por ser parte
+            <br />
+            de mi gran sueño.
+          </p>
+          <span class="heart" aria-hidden="true">♡</span>
+          <h2>Karol Mayte</h2>
+          <span class="eyebrow">26 · 12 · 2026</span>
+          <div class="floral" aria-hidden="true"></div>
+        </section>
+        <!-- MARK: Pie de página — crédito Elysium y controles para volver al inicio o repetir la apertura. -->
+        <footer class="site-footer">
+          <a
+            class="site-footer__brand"
+            href="https://www.instagram.com/elysium.invitaciones/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir Instagram de Elysium Invitaciones"
+          >
+            Diseño por
+            <strong>@elysium.invitaciones</strong>
+          </a>
+          <div class="site-footer__actions">
+            <a href="#inicio">
+              Volver al inicio
+              <svg
+                class="button__arrow button__arrow--up"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <use href="#icon-arrow-up-right" />
+              </svg>
+            </a>
+            <button
+              class="site-footer__replay"
+              id="replay-invitation"
+              type="button"
+              aria-label="Volver a ver la invitación desde el sobre"
+            >
+              <span aria-hidden="true">↻</span>
+              Ver de nuevo
+            </button>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <!-- MARK: Música — pista de fondo y botón fijo para reproducirla o pausarla. -->
+    <audio id="wedding-audio" src="data/song.mp3" loop preload="none"></audio>
+    <button
+      type="button"
+      class="music-toggle"
+      id="music-toggle"
+      aria-label="Reproducir música"
+      aria-pressed="false"
+      hidden
+    >
+      <span class="vinyl" aria-hidden="true"><span class="vinyl-label"><span class="vinyl-hole"></span></span></span>
+    </button>
+    <!-- MARK: Visor del carrusel 3D -->
+    <div class="c3-lb" id="c3Lb" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+      <button class="c3-lb-close" id="c3LbClose" type="button" aria-label="Cerrar foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <button class="c3-lb-nav c3-lb-prev" id="c3LbPrev" type="button" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <figure class="c3-lb-fig" id="c3LbFig"><img class="c3-lb-img" id="c3LbImg" alt="" draggable="false"></figure>
+      <button class="c3-lb-nav c3-lb-next" id="c3LbNext" type="button" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <p class="c3-lb-count" id="c3LbCount" aria-live="polite">1 / 7</p>
+    </div>
+    <!-- MARK: Visor del álbum — diálogo de fotografía ampliada con navegación. -->
+    <dialog class="lightbox" id="album-dialog" aria-label="Fotografía del álbum">
+      <img id="album-full" alt="" />
+      <div class="lightbox-bar">
+        <button class="icon-button" id="lightbox-prev" type="button" aria-label="Foto anterior ampliada">
+          ←
+        </button>
+        <p id="lightbox-count"></p>
+        <button class="button button--outline" id="lightbox-close" type="button">Cerrar</button>
+        <button class="icon-button" id="lightbox-next" type="button" aria-label="Foto siguiente ampliada">
+          →
+        </button>
+      </div>
+    </dialog>
+    <!-- MARK: Alternativa sin JavaScript — oculta el sobre y muestra un aviso con contacto. -->
+    <noscript>
+      <style>
+        .envelope {
+          display: none !important;
+        }
+      </style>
+      <p style="text-align: center; padding: 24px">
+        Para ver el álbum, el contador y confirmar tu asistencia, activa JavaScript.
+      </p>
+    </noscript>
+</body>
+</html>

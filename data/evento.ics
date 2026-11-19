@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Elysium Invitaciones//XV Karol Mayte//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:xv-karol-mayte-20261226@elysium.invitaciones
+DTSTAMP:20261119T000000Z
+DTSTART;VALUE=DATE:20261226
+DTEND;VALUE=DATE:20261227
+SUMMARY:XV de Karol Mayte
+LOCATION:Hotel Casa Pozo del Rayo\, Nuevo León 7\, Zona Centro\, 37800 Dolores Hidalgo\, Gto.
+DESCRIPTION:XV años de Karol Mayte Barrientos Briones.
+Recepción en Hotel Casa Pozo del Rayo. Horarios por confirmar.
+END:VEVENT
+END:VCALENDAR

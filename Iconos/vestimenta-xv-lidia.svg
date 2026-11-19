@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 280" role="img" aria-label="Vestido de noche y tiara">
+  <g data-ink="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m103 35 10-15 17 11 17-11 10 15"/>
+    <path d="M105 39h50M109 39l4 13h34l4-13"/>
+    <path d="M105 62c4 11 12 15 25 15s21-4 25-15"/>
+    <path d="M111 79c2 11 2 19-7 29l-9 9 15 12 10-14 10 6 10-6 10 14 15-12-9-9c-9-10-9-18-7-29"/>
+    <path d="M104 108c0 9 10 19 26 19s26-10 26-19"/>
+    <path d="M112 121c-8 17-20 35-35 49-12 13-20 37-23 62 49 19 103 19 152 0-3-25-11-49-23-62-15-14-27-32-35-49"/>
+    <path d="M130 127v120M96 163c-12 28-17 52-20 75M164 163c12 28 17 52 20 75"/>
+    <path d="M54 232c45 15 107 22 152 0M68 243c38 11 86 16 124 0"/>
+    <path d="M81 177c30 14 68 14 98 0M74 196c35 16 77 16 112 0" opacity=".45"/>
+    <path d="m48 100 4 7 7 4-7 4-4 7-4-7-7-4 7-4ZM211 88l3 5 5 3-5 3-3 5-3-5-5-3 5-3Z"/>
+    <circle cx="130" cy="28" r="3"/>
+    <circle cx="48" cy="111" r="1.5"/>
+    <circle cx="211" cy="96" r="1.5"/>
+  </g>
+</svg>
