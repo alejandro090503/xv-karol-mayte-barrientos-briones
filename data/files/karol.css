@@ -185,3 +185,54 @@ body.envelope-closed .ky-nav { opacity: 0 !important; pointer-events: none !impo
 .social .hashtag { font-size: clamp(24px, 7.4vw, 34px); overflow-wrap: anywhere; }
 /* El pie no queda debajo de la píldora del menú */
 @media (max-width: 1023px) { .site-footer { padding-bottom: 130px; } }
+
+/* ───────── "Todo levita u ondea" (karol-vida.js) ─────────
+   Propiedades individuales translate/rotate/scale: no pisan el transform de GSAP.
+   Solo corren con .ky-on (elemento cerca de la pantalla). */
+.ky-float, .ky-bob, .ky-sway, .ky-wave, .ky-breath, .ky-beat { animation-delay: var(--ky-d, 0s); }
+.ky-float.ky-on { animation: kyFloat 6s ease-in-out infinite; animation-delay: var(--ky-d, 0s); }
+.ky-float--slow.ky-on { animation-duration: 8s; }
+.ky-float--sm.ky-on { animation-name: kyFloatSm; }
+.ky-bob.ky-on { animation: kyBob 4.2s ease-in-out infinite; animation-delay: var(--ky-d, 0s); }
+.ky-sway.ky-on { animation: kySway 7s ease-in-out infinite; animation-delay: var(--ky-d, 0s); }
+.ky-wave.ky-on { animation: kyWave 6.5s ease-in-out infinite; animation-delay: var(--ky-d, 0s); }
+.ky-wave--soft.ky-on { animation-duration: 9s; animation-name: kyWaveSoft; }
+.ky-breath.ky-on { animation: kyBreath 4.5s ease-in-out infinite; animation-delay: var(--ky-d, 0s); }
+.ky-beat.ky-on { animation: kyBeat 2.6s ease-in-out infinite; animation-delay: var(--ky-d, 0s); }
+@keyframes kyFloat { 0%, 100% { translate: 0 0; rotate: -.5deg; } 50% { translate: 0 -8px; rotate: .5deg; } }
+@keyframes kyFloatSm { 0%, 100% { translate: 0 0; } 50% { translate: 0 -5px; } }
+@keyframes kyBob { 0%, 100% { translate: 0 0; rotate: -3deg; } 50% { translate: 0 -5px; rotate: 3deg; } }
+@keyframes kySway { 0%, 100% { rotate: -1deg; translate: -2px 0; } 50% { rotate: 1deg; translate: 2px -3px; } }
+@keyframes kyWave { 0%, 100% { translate: 0 0; rotate: -1.2deg; } 33% { translate: 0 -4px; rotate: .8deg; } 66% { translate: 0 2px; rotate: 1.2deg; } }
+@keyframes kyWaveSoft { 0%, 100% { translate: 0 0; rotate: -.4deg; } 50% { translate: 0 -4px; rotate: .4deg; } }
+@keyframes kyBreath { 0%, 100% { scale: .78 1; opacity: .7; } 50% { scale: 1.18 1; opacity: 1; } }
+@keyframes kyBeat { 0%, 100% { scale: 1; } 15% { scale: 1.18; } 30% { scale: 1; } 45% { scale: 1.1; } }
+.rsvp-divider.ky-on { animation-name: kyFloatSm; }
+
+/* Ramos extra (dibujos) que se mecen en los bordes, sin tapar texto */
+.section > .ky-flor {
+  position: absolute !important; z-index: 1 !important; pointer-events: none;
+  width: 150px; height: 160px; top: 40px; opacity: .92;
+}
+.ky-flor::before {
+  content: ""; position: absolute; inset: 0;
+  background: var(--floral-image) center / contain no-repeat;
+  transform-origin: 50% 80%;
+}
+.ky-flor--b::before { background-image: var(--floral-bottom); }
+.ky-flor--r { right: -78px; rotate: -22deg; }
+.ky-flor--l { left: -78px; rotate: 160deg; }
+.ky-flor--l::before { scale: 1 -1; }
+.ky-flor--low { top: auto; bottom: 30px; }
+.ky-flor.ky-on::before { animation: kyFlor 6.5s ease-in-out infinite alternate; }
+.ky-flor--b.ky-on::before { animation-duration: 8s; }
+@keyframes kyFlor { from { rotate: -3deg; translate: 0 0; } to { rotate: 4deg; translate: 3px -6px; } }
+
+/* Brillos que caen (glitter) — encima del fondo, debajo del menú y del vinilo */
+.ky-glitter { position: fixed; top: 0; left: 50%; translate: -50% 0; z-index: 40; pointer-events: none; mix-blend-mode: screen; }
+body.envelope-closed .ky-glitter { opacity: 0; }
+.ky-glitter { transition: opacity 1.2s ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ky-on, .ky-flor.ky-on::before { animation: none !important; }
+}
