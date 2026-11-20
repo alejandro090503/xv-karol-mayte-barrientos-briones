@@ -236,3 +236,42 @@ body.envelope-closed .ky-glitter { opacity: 0; }
 @media (prefers-reduced-motion: reduce) {
   .ky-on, .ky-flor.ky-on::before { animation: none !important; }
 }
+
+/* ───────── Sobre en video (Gemini + Flow) ───────── */
+.envelope--video { background: #2B2B2F; transition: opacity .9s ease; }
+.envelope--video.is-fading { opacity: 0; pointer-events: none; }
+.envelope--video .sobre-img,
+.envelope--video .sobre-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.envelope--video .sobre-img { z-index: 1; cursor: pointer; animation: kySobreIn 1s ease .1s both; }
+.envelope--video .sobre-video { z-index: 2; opacity: 0; transition: opacity .35s ease; pointer-events: none; }
+.envelope--video.is-playing .sobre-video { opacity: 1; }
+@keyframes kySobreIn { from { opacity: 0; scale: 1.03; } to { opacity: 1; scale: 1; } }
+.envelope--video .seal-button.sobre-btn {
+  position: absolute; z-index: 3; left: 50%; top: auto; bottom: 9%;
+  width: auto; height: auto; border-radius: 0; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  background: none; border: 0; padding: 8px; cursor: pointer; filter: none;
+  color: #fbf7f2; -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+  animation: kySobreIn 1s ease .7s both; transition: opacity .35s ease;
+}
+.envelope--video.is-opening .sobre-btn { animation: none; opacity: 0; pointer-events: none; }
+.sobre-ring { position: relative; display: grid; place-items: center; width: 82px; height: 82px; }
+.sobre-ring::before, .sobre-ring::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  border: 1px solid rgba(233, 168, 188, .65); animation: kyRing 2.8s ease-out infinite;
+}
+.sobre-ring::after { animation-delay: 1.4s; }
+@keyframes kyRing { 0% { scale: .65; opacity: .9; } 100% { scale: 1.65; opacity: 0; } }
+.sobre-circle {
+  position: relative; display: grid; place-items: center; width: 66px; height: 66px; border-radius: 50%;
+  background: rgba(43, 43, 47, .72); border: 1px solid rgba(233, 168, 188, .7);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .4), inset 0 0 0 4px rgba(141, 181, 150, .18);
+  color: #f6dbe4; transition: scale .3s ease;
+}
+.sobre-btn:active .sobre-circle { scale: .92; }
+.sobre-circle svg { width: 28px; height: 28px; }
+.sobre-lbl {
+  font: 600 12px/1 var(--font-body); letter-spacing: .32em; text-transform: uppercase; color: #fbf7f2;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, .8), 0 0 22px rgba(0, 0, 0, .5);
+}
+@media (prefers-reduced-motion: reduce) { .sobre-ring::before, .sobre-ring::after { animation: none; } }

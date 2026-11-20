@@ -15,7 +15,7 @@
       property="og:description"
       content="Sábado 26 de diciembre de 2026 · Una invitación especial para ti."
     />
-    <meta property="og:image" content="https://xv-karol-mayte-barrientos-briones.vercel.app/foto.jpg" />
+    <meta property="og:image" content="https://xv-karol-mayte-barrientos-briones.vercel.app/og-image.jpg?v=2" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -46,17 +46,18 @@
     <link rel="stylesheet" href="data/set.css?v=20260930-3" />
     <link rel="stylesheet" href="data/files/style.css?v=20261109-scroll" />
     <link rel="stylesheet" href="data/files/envelope.css?v=20260927-3" />
+    <link rel="preload" as="image" href="data/sobre.jpg" />
     <link rel="stylesheet" href="data/files/xv.css?v=20261014-sync1" />
     <link rel="stylesheet" href="data/files/full-red.css?v=20260930-7" />
     <link rel="stylesheet" href="data/files/elysium.css?v=3" />
-    <link rel="stylesheet" href="data/files/karol.css?v=2" />
+    <link rel="stylesheet" href="data/files/karol.css?v=4" />
     <script defer src="./JS/gsap.min.js"></script>
     <script defer src="./JS/ScrollTrigger.min.js"></script>
     <script defer src="data/files/core.js?v=20261015-1"></script>
     <script defer src="data/files/motion.js?v=20261109-scroll"></script>
     <script defer src="data/files/parallax.js?v=20261014-sync1"></script>
     <script defer src="data/files/background.js?v=20260930-2"></script>
-    <script defer src="data/files/envelope.js?v=20260930-4"></script>
+    <script defer src="data/files/envelope.js?v=karol-video3"></script>
     <script defer src="data/files/elysium.js?v=2"></script>
     <script defer src="data/files/karol.js?v=1"></script>
     <script defer src="data/files/karol-vida.js?v=1"></script>
@@ -83,43 +84,30 @@
       </defs>
     </svg>
 
-    <!-- MARK: Sobre de entrada — pliegues, carta, sello y gesto que abre la invitación; colores en data/set.css. -->
+    <!-- MARK: Sobre de entrada — imagen a pantalla completa (Gemini) + video de apertura (Flow).
+         Al tocar se reproduce data/sobre.mp4 y, en cuanto sube la solapa (SOBRE_CORTE en envelope.js),
+         se funde directo a la invitación. Mantiene los eventos sobreSelloInteraccion/Revelando/Abierto. -->
     <div
       id="sobre-sello"
-      class="envelope"
-      data-seal-material="metal"
+      class="envelope envelope--video"
       role="dialog"
       aria-modal="true"
       aria-labelledby="envelope-title"
       hidden
     >
-      <div class="envelope-layer envelope-back"></div>
-      <div class="envelope-letter" aria-hidden="true">
-        <span class="eyebrow">Una noche para recordar</span>
-        <p class="script">Mis XV años</p>
-        <span class="rule"></span>
-        <p class="small">26 de diciembre de 2026</p>
-      </div>
-      <div class="envelope-layer envelope-side envelope-side--left"></div>
-      <div class="envelope-layer envelope-side envelope-side--right"></div>
-      <div class="envelope-layer envelope-bottom"></div>
-      <div class="envelope-bottom-edge"></div>
-      <div class="envelope-flap-wrap"><div class="envelope-layer envelope-flap"></div></div>
-      <div class="envelope-heading">
-        <span class="eyebrow">Mis quince años</span>
-        <p class="script" id="envelope-title">Karol Mayte</p>
-        <span class="envelope-date">26 · DICIEMBRE · 2026</span>
-      </div>
-      <div class="envelope-ornament" aria-hidden="true"></div>
-      <!-- MARK: Pase dentro del sobre — variante PHP activa. -->
-              <button class="seal-button" type="button" aria-label="Abrir invitación de XV años de Karol Mayte">
-        <span class="seal-art" aria-hidden="true"></span>
+      <h1 class="sr-only" id="envelope-title">Invitación a los XV años de Karol Mayte</h1>
+      <img class="sobre-img" src="data/sobre.jpg" width="768" height="1376" alt="" aria-hidden="true" fetchpriority="high" />
+      <video class="sobre-video" muted playsinline preload="auto" poster="data/sobre.jpg" aria-hidden="true" tabindex="-1">
+        <source src="data/sobre.mp4" type="video/mp4" />
+      </video>
+      <button class="seal-button sobre-btn" type="button" aria-label="Abrir invitación de XV años de Karol Mayte">
+        <span class="sobre-ring" aria-hidden="true">
+          <span class="sobre-circle">
+            <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="24" height="16" rx="2"/><path d="M3 8l12 10L27 8"/></svg>
+          </span>
+        </span>
+        <span class="sobre-lbl">Toca para abrir</span>
       </button>
-      <div class="envelope-instruction">
-        <span class="eyebrow">Toca el sello para abrir</span>
-        <p>Quiero celebrar este sueño contigo</p>
-      </div>
-      <div class="envelope-bottom-copy">UNA INVITACIÓN PARA TI</div>
     </div>
 
     <!-- MARK: Contenedor de la invitación — limita el ancho de la página en escritorio. -->
