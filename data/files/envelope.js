@@ -3,8 +3,8 @@
    Flujo: imagen fija a pantalla completa → toque → video → al subir la solapa (SOBRE_CORTE) se funde a la invitación. */
 (() => {
   "use strict";
-  const SOBRE_CORTE = 1.5; // segundos del video: la solapa empieza a subir → fundido inmediato
-  const FUNDIDO_MS = 900;
+  const SOBRE_CORTE = 2.2; // segundos del video: la solapa ya va bien abierta → destello blanco y fundido
+  const FUNDIDO_MS = 1650; // 0.6 s a blanco + 1 s del blanco a la invitación
   const envelope = document.getElementById("sobre-sello");
   const main = document.querySelector(".phone-preview-shell");
   const button = envelope.querySelector(".seal-button");
@@ -57,12 +57,10 @@
     watchdog = setTimeout(fundir, 4500); // respaldo si el video no avanza
     const cruce = () => { envelope.classList.add("is-playing"); };
     video.addEventListener("playing", cruce, { once: true });
-    video.addEventListener("timeupdate", function corte() {
-      if (video.currentTime >= SOBRE_CORTE) {
-        video.removeEventListener("timeupdate", corte);
-        fundir();
-      }
-    });
+    // timeupdate llega cada ~250 ms; se revisa cada 40 ms para cortar justo en SOBRE_CORTE.
+    const revisa = () => { if (video.currentTime >= SOBRE_CORTE) { clearInterval(vigia); fundir(); } };
+    const vigia = setInterval(revisa, 40);
+    video.addEventListener("timeupdate", revisa); // respaldo si el navegador frena los temporizadores
     video.addEventListener("ended", fundir, { once: true });
     video.addEventListener("error", fundir, { once: true });
     const p = video.play();
