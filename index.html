@@ -50,7 +50,7 @@
     <link rel="stylesheet" href="data/files/xv.css?v=20261014-sync1" />
     <link rel="stylesheet" href="data/files/full-red.css?v=20260930-7" />
     <link rel="stylesheet" href="data/files/elysium.css?v=3" />
-    <link rel="stylesheet" href="data/files/karol.css?v=6" />
+    <link rel="stylesheet" href="data/files/karol.css?v=7" />
     <script defer src="./JS/gsap.min.js"></script>
     <script defer src="./JS/ScrollTrigger.min.js"></script>
     <script defer src="data/files/core.js?v=20261015-1"></script>
@@ -232,8 +232,8 @@
           </div>
           <span class="rule" aria-hidden="true"></span>
           <div class="family-group" data-reveal><div class="lev">
-            <span class="eyebrow">Mis padrinos</span>
-            <p class="por-confirmar">Por confirmar</p></div>
+            <span class="eyebrow">Mi padrino</span>
+            <p>Mario Alejandro Ramírez Monroy</p></div>
           </div>
           <svg
             class="wave wave--bottom wave--rose"
@@ -265,8 +265,8 @@
             </div>
             <span class="side" id="mes-evento">Diciembre</span>
           </div>
-          <!-- PENDIENTE: hora real de la misa; mientras tanto el contador cuenta hasta el inicio del día. -->
-          <time id="hora-evento" class="sr-only">12:00 AM</time>
+          <!-- El contador llega a la cita de las 2:00 p. m. en el salón. -->
+          <time id="hora-evento" class="sr-only">2:00 PM</time>
           <div class="calendar" data-reveal>
             <div class="calendar-header" id="calendar-title">Diciembre</div>
             <div
@@ -281,7 +281,7 @@
           <div class="calendar-actions" role="group" aria-label="Guardar la fecha en tu calendario">
             <span class="calendar-actions__label">Guarda la fecha</span>
             <div class="calendar-actions__links">
-              <a class="button button--outline" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=XV%20de%20Karol%20Mayte&amp;dates=20261226%2F20261227&amp;details=XV%20a%C3%B1os%20de%20Karol%20Mayte%20Barrientos%20Briones.%20Recepci%C3%B3n%20en%20Hotel%20Casa%20Pozo%20del%20Rayo%2C%20Dolores%20Hidalgo.%20Horarios%20por%20confirmar.&amp;location=Hotel%20Casa%20Pozo%20del%20Rayo%2C%20Nuevo%20Le%C3%B3n%207%2C%20Zona%20Centro%2C%2037800%20Dolores%20Hidalgo%2C%20Gto.&amp;ctz=America%2FMexico_City" target="_blank" rel="noopener noreferrer">
+              <a class="button button--outline" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=XV%20de%20Karol%20Mayte&amp;dates=20261226%2F20261227&amp;details=XV%20a%C3%B1os%20de%20Karol%20Mayte%20Barrientos%20Briones.%20Cita%202%3A00%20p.%20m.%20en%20el%20sal%C3%B3n%20(Hotel%20Casa%20Pozo%20del%20Rayo)%20para%20ir%20caminando%20al%20Templo%20de%20la%20Tercera%20Orden%20con%20la%20banda%20y%20los%20caballos.&amp;location=Hotel%20Casa%20Pozo%20del%20Rayo%2C%20Nuevo%20Le%C3%B3n%207%2C%20Zona%20Centro%2C%2037800%20Dolores%20Hidalgo%2C%20Gto.&amp;ctz=America%2FMexico_City" target="_blank" rel="noopener noreferrer">
                 Google Calendar
                 <svg class="calendar-actions__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M7 3v4M17 3v4M3 10h18" /></svg>
               </a>
@@ -353,14 +353,25 @@
             <span class="script">aquí</span>
           </h2>
           <!-- MARK: Ceremonia — parroquia, hora y botón para abrir su mapa. -->
-          <!-- PENDIENTE: hora y link de Google Maps de la misa (la clienta lo enviará). Templo de la Tercera Orden confirmado 20-nov. -->
-          <article class="venue venue--pendiente" data-reveal><div class="lev">
+          <!-- Templo y ubicación confirmados 20-nov. PENDIENTE: hora exacta de la misa. Cita 2:00 p. m. en el salón para ir caminando. -->
+          <article class="venue" data-reveal><div class="lev">
             <span class="venue-icon" aria-hidden="true" style="--event-icon:url('/Iconos/Itinerario/iglesia.png')"></span>
             <span class="eyebrow">Misa de XV años</span>
             <h3>Templo de la<br />Tercera Orden</h3>
             <p>Dolores Hidalgo, Gto.</p>
-            <div class="time">Hora por confirmar</div>
-            <span class="button button--outline button--soon" aria-disabled="true">Ubicación próximamente</span></div>
+            <div class="time">Cita 2:00 p. m. en el salón</div>
+            <p class="venue-nota">Si me acompañas a misa, te espero a las 2:00 p. m. en el salón, a dos cuadras del templo. Saldré a caballo y me acompañarás caminando hasta el templo, con la banda y los caballos.</p>
+            <a
+              class="button button--outline"
+              href="https://www.google.com/maps/search/?api=1&amp;query=Templo+de+la+Tercera+Orden%2C+Dolores+Hidalgo%2C+Gto."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Cómo llegar
+              <svg class="button__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <use href="#icon-arrow-up-right" />
+              </svg>
+            </a></div>
           </article>
           <!-- MARK: Recepción — salón, hora y botón para abrir su mapa. -->
           <article class="venue" data-reveal><div class="lev">
@@ -429,7 +440,7 @@
           ></div>
           <noscript>
             <p>
-              Misa · Recepción · Vals · Cena · Baile — horarios por confirmar.
+              Cita en el salón: 2:00 PM · Caminata al templo · Misa · Recepción · Vals · Cena · Baile — demás horarios por confirmar.
             </p>
           </noscript>
         </section>
@@ -437,6 +448,8 @@
         <script>
           // PENDIENTE: horarios reales del itinerario (por confirmar con el cliente).
           const eventos = [
+            { nombre: "Cita en el salón", hora: "2:00 PM", icono: "recepcion" },
+            { nombre: "Caminata al templo con banda y caballos", hora: "Al salir del salón", icono: "baile" },
             { nombre: "Misa", hora: "Por confirmar", icono: "iglesia" },
             { nombre: "Recepción", hora: "Por confirmar", icono: "recepcion" },
             { nombre: "Vals", hora: "Por confirmar", icono: "vals" },

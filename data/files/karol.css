@@ -284,3 +284,6 @@ body.envelope-closed .ky-glitter { opacity: 0; }
   text-shadow: 0 1px 10px rgba(0, 0, 0, .8), 0 0 22px rgba(0, 0, 0, .5);
 }
 @media (prefers-reduced-motion: reduce) { .sobre-ring::before, .sobre-ring::after { animation: none; } }
+
+/* Nota de la cita para acompañar a la quinceañera al templo */
+.venue .venue-nota { max-width: 310px; margin: 4px auto 20px; font-size: 16px; line-height: 1.6; font-weight: 500; color: var(--on-red); }
