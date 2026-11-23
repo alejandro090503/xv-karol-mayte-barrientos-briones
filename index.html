@@ -50,7 +50,7 @@
     <link rel="stylesheet" href="data/files/xv.css?v=20261014-sync1" />
     <link rel="stylesheet" href="data/files/full-red.css?v=20260930-7" />
     <link rel="stylesheet" href="data/files/elysium.css?v=3" />
-    <link rel="stylesheet" href="data/files/karol.css?v=7" />
+    <link rel="stylesheet" href="data/files/karol.css?v=9" />
     <script defer src="./JS/gsap.min.js"></script>
     <script defer src="./JS/ScrollTrigger.min.js"></script>
     <script defer src="data/files/core.js?v=20261015-1"></script>
@@ -129,7 +129,7 @@
             data-hero-visual
             data-src=""
             data-video-ready="false"
-            poster="fondos/1.jpg"
+            poster="data/sobre.jpg"
             autoplay
             muted
             loop
@@ -137,23 +137,23 @@
             preload="none"
             aria-hidden="true"
           ></video>
-          <!-- MARK: Foto vertical activa — retrato de Karol Mayte con traje de charra. -->
+          <!-- MARK: Portada sin fotos (petición de la quinceañera 23-nov): bordado del sobre con el sello KM. -->
           <img
             class="hero-media hero-vertical"
             data-hero-visual
-            data-src="fondos/1.jpg"
+            data-src="data/sobre.jpg"
             width="1200"
             height="1800"
-            alt="Karol Mayte con su traje de charra rojo"
+            alt=""
           />
           <!-- MARK: Foto horizontal alternativa — usar data-hero-mode="horizontal"; GSAP mueve suavemente esta imagen. -->
           <img
             class="hero-media hero-horizontal"
             data-hero-visual
-            data-src="fondos/horizontal.jpg"
+            data-src="data/sobre.jpg"
             width="900"
             height="600"
-            alt="Karol Mayte a caballo con su traje de charra"
+            alt=""
           />
           <!-- MARK: Textos de portada — velo de contraste, monograma, nombres y fecha. -->
           <div class="hero-shade"></div>
@@ -201,21 +201,6 @@
           <p class="script signature" data-reveal>Con cariño, Karol Mayte</p>
         </section>
 
-        <!-- MARK: Foto intermedia 1 — retrato con marco de arco, parallax y frase breve. -->
-        <div class="photo-section photo-section--intro">
-          <figure class="photo-frame photo--arch" data-parallax style="--photo-position: 50% 50%">
-            <img
-              src="fondos/2.jpg"
-              width="800"
-              height="1200"
-              loading="lazy"
-              decoding="async"
-              alt="Karol Mayte con su sombrero de charra"
-            />
-          </figure>
-          <div class="floral floral--left" data-drift aria-hidden="true"></div>
-          <p class="photo-caption">Un día para soñar</p>
-        </div>
 
         <!-- MARK: Familia y padrinos — PENDIENTE: nombres de papás y padrinos (por confirmar con el cliente). -->
         <section class="section paper family" id="familia">
@@ -329,19 +314,6 @@
           <p id="countdown-status" class="countdown-status"></p>
         </section>
 
-        <!-- MARK: Foto intermedia 2 — imagen con borde ondulado y efecto parallax. -->
-        <div class="photo-section">
-          <figure class="photo-frame photo--wave" data-parallax style="--photo-position: 50% 48%">
-            <img
-              src="fondos/3.jpg"
-              width="1200"
-              height="1800"
-              loading="lazy"
-              decoding="async"
-              alt="Karol Mayte montando con su traje de charra"
-            />
-          </figure>
-        </div>
 
         <!-- MARK: Ubicaciones — lugares, horarios, fotografías y enlaces de mapas. -->
         <section class="section paper venues" id="ubicaciones">
@@ -410,19 +382,6 @@
           </article>
         </section>
 
-        <!-- MARK: Foto intermedia 3 — retrato desfasado dentro de un marco exterior. -->
-        <div class="photo-section photo-section--offset">
-          <figure class="photo-frame photo--offset" data-parallax style="--photo-position: 50% 47%">
-            <img
-              src="fondos/4.jpg"
-              width="1280"
-              height="1920"
-              loading="lazy"
-              decoding="async"
-              alt="Karol Mayte con su traje de charra negro y rosa"
-            />
-          </figure>
-        </div>
 
         <!-- MARK: Itinerario — core.js crea las actividades usando la lista eventos de abajo. -->
         <section class="section paper itinerary itinerario" id="itinerario">
@@ -546,60 +505,7 @@
           </details>
         </section>
 
-        <!-- MARK: Foto intermedia 4 — retrato con bordes suaves y frase breve. -->
-        <div class="photo-section">
-          <figure class="photo-frame photo--soft" data-parallax style="--photo-position: 50% 50%">
-            <img
-              src="fondos/5.jpg"
-              width="1200"
-              height="1800"
-              loading="lazy"
-              decoding="async"
-              alt="Karol Mayte con su vestido de escaramuza blanco"
-            />
-          </figure>
-          <p class="photo-caption">Un recuerdo para siempre</p>
-        </div>
 
-        <!-- MARK: Álbum — carrusel 3D con reflejo (c3-), giro automático + arrastre + visor propio. -->
-        <section class="section paper album c3-gallery" id="album">
-          <div class="ink-bg ink-f" aria-hidden="true"><i style="background-image:url(/ink/hero.webp)"></i></div>
-          <span class="eyebrow" data-reveal>Instantes de un sueño</span>
-          <h2 data-reveal>Mi álbum</h2>
-          <div class="c3-scene" id="c3Scene">
-            <div class="c3-ring" id="c3Ring">
-              <button class="c3-card" type="button" data-i="0" aria-label="Ver foto 1 de 7">
-                <span class="c3-photo"><img src="album/1.jpg" alt="Karol Mayte, foto 1" decoding="async" draggable="false"></span>
-                <span class="c3-mirror" aria-hidden="true"><span class="c3-photo"><img src="album/1.jpg" alt="" decoding="async" draggable="false"></span></span>
-              </button>
-              <button class="c3-card" type="button" data-i="1" aria-label="Ver foto 2 de 7">
-                <span class="c3-photo"><img src="album/2.jpg" alt="Karol Mayte, foto 2" decoding="async" draggable="false"></span>
-                <span class="c3-mirror" aria-hidden="true"><span class="c3-photo"><img src="album/2.jpg" alt="" decoding="async" draggable="false"></span></span>
-              </button>
-              <button class="c3-card" type="button" data-i="2" aria-label="Ver foto 3 de 7">
-                <span class="c3-photo"><img src="album/3.jpg" alt="Karol Mayte, foto 3" decoding="async" draggable="false"></span>
-                <span class="c3-mirror" aria-hidden="true"><span class="c3-photo"><img src="album/3.jpg" alt="" decoding="async" draggable="false"></span></span>
-              </button>
-              <button class="c3-card" type="button" data-i="3" aria-label="Ver foto 4 de 7">
-                <span class="c3-photo"><img src="album/4.jpg" alt="Karol Mayte, foto 4" decoding="async" draggable="false"></span>
-                <span class="c3-mirror" aria-hidden="true"><span class="c3-photo"><img src="album/4.jpg" alt="" decoding="async" draggable="false"></span></span>
-              </button>
-              <button class="c3-card" type="button" data-i="4" aria-label="Ver foto 5 de 7">
-                <span class="c3-photo"><img src="album/5.jpg" alt="Karol Mayte, foto 5" decoding="async" draggable="false"></span>
-                <span class="c3-mirror" aria-hidden="true"><span class="c3-photo"><img src="album/5.jpg" alt="" decoding="async" draggable="false"></span></span>
-              </button>
-              <button class="c3-card" type="button" data-i="5" aria-label="Ver foto 6 de 7">
-                <span class="c3-photo"><img src="album/6.jpg" alt="Karol Mayte, foto 6" decoding="async" draggable="false"></span>
-                <span class="c3-mirror" aria-hidden="true"><span class="c3-photo"><img src="album/6.jpg" alt="" decoding="async" draggable="false"></span></span>
-              </button>
-              <button class="c3-card" type="button" data-i="6" aria-label="Ver foto 7 de 7">
-                <span class="c3-photo"><img src="album/7.jpg" alt="Karol Mayte, foto 7" decoding="async" draggable="false"></span>
-                <span class="c3-mirror" aria-hidden="true"><span class="c3-photo"><img src="album/7.jpg" alt="" decoding="async" draggable="false"></span></span>
-              </button>
-            </div>
-          </div>
-          <p class="c3-hint">Desliza para girar · toca una foto</p>
-        </section>
 
         <!-- MARK: Google Fotos — sección opcional para que invitados suban sus fotos.
              Sustituir el enlace por el álbum compartido del evento antes de activar.
@@ -714,19 +620,6 @@
           </div>
         </section>
 
-        <!-- MARK: Foto intermedia 5 — imagen final con cierre redondeado. -->
-        <div class="photo-section">
-          <figure class="photo-frame photo--closing" data-parallax style="--photo-position: 50% 48%">
-            <img
-              src="fondos/6.jpg"
-              width="1200"
-              height="1800"
-              loading="lazy"
-              decoding="async"
-              alt="Karol Mayte con su pastel de quince años"
-            />
-          </figure>
-        </div>
         <!-- MARK: Despedida — agradecimiento final, nombres y fecha. -->
         <section class="section paper ending">
           <span class="eyebrow" data-reveal>Una noche para atesorar</span>
@@ -790,14 +683,6 @@
     >
       <span class="vinyl" aria-hidden="true"><span class="vinyl-label"><span class="vinyl-hole"></span></span></span>
     </button>
-    <!-- MARK: Visor del carrusel 3D -->
-    <div class="c3-lb" id="c3Lb" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
-      <button class="c3-lb-close" id="c3LbClose" type="button" aria-label="Cerrar foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-      <button class="c3-lb-nav c3-lb-prev" id="c3LbPrev" type="button" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <figure class="c3-lb-fig" id="c3LbFig"><img class="c3-lb-img" id="c3LbImg" alt="" draggable="false"></figure>
-      <button class="c3-lb-nav c3-lb-next" id="c3LbNext" type="button" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-      <p class="c3-lb-count" id="c3LbCount" aria-live="polite">1 / 7</p>
-    </div>
     <!-- MARK: Visor del álbum — diálogo de fotografía ampliada con navegación. -->
     <dialog class="lightbox" id="album-dialog" aria-label="Fotografía del álbum">
       <img id="album-full" alt="" />
