@@ -81,7 +81,7 @@
   document.body.appendChild(cv);
   var ctx = cv.getContext("2d");
   var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-  var colores = [[251, 247, 242], [251, 247, 242], [233, 168, 188], [246, 219, 228], [141, 181, 150]];
+  var colores = [[255, 255, 255], [214, 140, 165], [196, 150, 168], [168, 164, 176], [141, 181, 150]];
   var motas = [];
   function size() {
     var shell = document.querySelector(".phone-preview-stage");

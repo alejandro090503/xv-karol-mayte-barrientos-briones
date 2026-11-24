@@ -35,22 +35,22 @@
   --blush: #f2d3dd; /* Rosa tenue para transiciones y detalles. */
   --rose: #B04A6E; /* Rosa de acentos y botones. */
   --rose-dark: #45454B; /* Vino de textos destacados y estados de foco. */
-  --sage: #8DB596; /* Borgoña de las secciones oscuras. */
+  --sage: #4F7D5C; /* Borgoña de las secciones oscuras. */
   --sage-dark: #2B2B2F; /* Vino profundo para detalles y botones claros. */
   --ink: #2B2B2F; /* Color principal de lectura sobre marfil. */
   --muted: #5c5c63; /* Texto secundario sobre marfil. */
   --gold: #8DB596; /* Verde salvia: líneas y detalles. */
   --line: #d9d9de; /* Bordes y separadores. */
-  --outside: #1f1f23; /* Fondo visible fuera de la tarjeta en escritorio. */
+  --outside: #d8cdd2; /* Fondo visible fuera de la tarjeta en escritorio. */
 
   /* ROJO DOMINANTE: superficies y contraste, independientes del sobre. */
-  --red-surface: #45454B; /* Gris de ondas y paneles. */
-  --red-deep: #2B2B2F; /* Gris profundo para bloques de énfasis. */
-  --on-red: #fbf7f2; /* Texto principal sobre rojo. */
-  --on-red-muted: #e6e3e6; /* Texto de lectura secundaria sobre rojo. */
-  --on-red-gold: #E9A8BC; /* Acento rosa sobre gris. */
-  --backdrop-image: url("/fondos/satin-gris.jpg"); /* Satén compartido; ruta desde full-red.css. */
-  --backdrop-veil: #2b2b2fa8; /* Velo vino para conservar el contraste. */
+  --red-surface: #EBD7DB; /* Gris de ondas y paneles. */
+  --red-deep: #D9CCD3; /* Gris profundo para bloques de énfasis. */
+  --on-red: #3A3238; /* Texto principal sobre rojo. */
+  --on-red-muted: #5C5259; /* Texto de lectura secundaria sobre rojo. */
+  --on-red-gold: #8E3B58; /* Acento rosa sobre gris. */
+  --backdrop-image: url("/fondos/satin-perla.jpg"); /* Satén compartido; ruta desde full-red.css. */
+  --backdrop-veil: #f3e6e98c; /* Velo vino para conservar el contraste. */
   --backdrop-duration: 30s; /* Duración de cada recorrido vertical y zoom. */
 
   /* TIPOGRAFÍA Y RITMO */

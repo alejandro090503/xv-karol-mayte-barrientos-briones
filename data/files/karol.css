@@ -311,3 +311,45 @@ body.envelope-closed .ky-glitter { opacity: 0; }
   72% { opacity: .12; transform: scale(.996); }
 }
 @media (prefers-reduced-motion: reduce) { .hero-glow img { animation: none !important; will-change: auto; } }
+
+/* ───────── PALETA CLARA (24-nov): blush perla + plata + rosa oro; la clienta pidió "no muy oscuro, tirándole a plata" ───────── */
+.phone-preview-stage { background: var(--red-surface); color: var(--on-red); }
+.hero { color: #fbf7f2; }                                  /* la portada sigue oscura hasta tener el hero nuevo */
+.hero h1, .hero-date, .hero-content > .eyebrow, .scroll-cue { color: #fbf7f2; }
+.timeline-event time, .gift-icon, .transfer-icon, .copy-status { color: #3F6B4D; }
+.rule, .itinerary-list::before { background: #8E3B58; opacity: .55; }
+.por-confirmar { color: #8E3B58; }
+.venue .time, .opening h2 em, .signature, .family-group .eyebrow, .venue .eyebrow, .itinerary h2 .script,
+.dress .script, .information h3, .ending .script, .heart, .hashtag { color: #8E3B58; }
+.venue-icon { background: radial-gradient(circle at 35% 30%, #f6e6ea, #dcc6cf); border-color: rgba(142, 59, 88, .45); box-shadow: inset 0 0 0 6px rgba(255, 255, 255, .5), 0 12px 26px rgba(90, 60, 75, .18); }
+.venue-icon::before { background: #8E3B58; }
+.timeline-icon { background: #8E3B58; border-color: #EBD7DB; }
+.timeline-icon::before { background: #fbf7f2; }
+.button { background: #8E3B58; border-color: #8E3B58; color: #fbf7f2; }
+.button--outline, .social .button--outline { background: rgba(255, 255, 255, .45); border-color: #8E3B58; color: #5e2438; }
+.button--outline:hover, .social .button--outline:hover { background: rgba(142, 59, 88, .14); }
+.site-footer, .site-footer__actions > a { color: #5C5259; }
+.site-footer__brand, .site-footer__replay { color: #8E3B58; }
+.venue + .venue, .gift-option, details, .information, .site-footer, .icon-button, .site-footer__replay { border-color: rgba(142, 59, 88, .3); }
+.gift-option::after { background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .75), rgba(233, 168, 188, .4), transparent); }
+.venue .venue-nota, .section-intro, .venue p, .gift-option p, .dress .small, .dress .attire-note, .information p { color: #3A3238; text-shadow: none; }
+h2, h3 { text-shadow: none; }
+.countdown .time-number, .countdown .time-label { color: #3A3238; }
+.fecha-evento .side, .fecha-evento .numero, .fecha-evento .anio { color: #3A3238; }
+.ky-glitter { mix-blend-mode: normal; }
+.ky-flor { opacity: .95; }
+
+/* Títulos y etiquetas que la base ponía en marfil sobre fondo oscuro */
+.section h2, .section h3, .section .eyebrow, .date-section, .countdown-section, .countdown-section h2, .date-section h2,
+.dress h2, .dress .eyebrow, .social h2, .social .eyebrow, .itinerary h2, .itinerary .eyebrow { color: #3A3238; }
+.section .eyebrow { color: #6a4a58; }
+.hero .eyebrow, .hero h1 { color: #fbf7f2; }
+.countdown-section, .dress, .social { color: #3A3238; }
+.time-label, .calendar-actions__label, .date-note { color: #5C5259; }
+.hero-shade { background: linear-gradient(180deg, transparent 0%, transparent 58%, #3d3a4466 76%, #4a4650f0 100%); }
+.dress-illustration { color: #8E3B58; }
+.dress .script, .hero ~ * .script { color: #8E3B58; }
+.social .section-intro, .date-section .eyebrow, .date-note, .fecha-evento .numero, .social .hashtag { color: #3A3238 !important; }
+.social .hashtag, .date-section .eyebrow { color: #8E3B58 !important; }
+.date-section .calendar-actions .button--outline { background: rgba(255,255,255,.55); color: #5e2438; }
+.venue .time, .venue h3, .venue p, .por-confirmar { text-shadow: none !important; }
