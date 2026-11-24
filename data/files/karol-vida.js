@@ -65,6 +65,14 @@
     }
   }
 
+  // El resplandor de la portada corre siempre por CSS; solo se pausa cuando la portada sale de pantalla.
+  var glow = document.querySelector(".hero-glow");
+  if (glow && !reduced && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (es) {
+      glow.classList.toggle("is-paused", !es[0].isIntersecting);
+    }).observe(document.querySelector(".hero"));
+  }
+
   // ── 3. Brillos cayendo (glitter premium) ──
   if (reduced) return;
   var cv = document.createElement("canvas");
