@@ -288,5 +288,8 @@ body.envelope-closed .ky-glitter { opacity: 0; }
 /* Nota de la cita para acompañar a la quinceañera al templo */
 .venue .venue-nota { max-width: 310px; margin: 4px auto 20px; font-size: 16px; line-height: 1.6; font-weight: 500; color: var(--on-red); }
 
-/* Portada sin foto de la quinceañera: el sello sube para no chocar con "Mis quince años" */
-.hero-vertical, .hero-horizontal { scale: 1.2; transform-origin: 50% 100%; object-position: 50% 50%; }
+/* Portada: rosas en relieve arriba y nombre sobre el papel oscuro. Sin velo encima de las flores. */
+.hero-vertical, .hero-horizontal { width: 100%; left: 0; object-position: 34% 0; }
+.hero-top { display: none; }
+.hero-shade { background: linear-gradient(180deg, transparent 0%, transparent 58%, #2b2b2f66 76%, #3d3d45f0 100%); }
+.hero h1, .hero-date, .hero-content > .eyebrow { text-shadow: 0 2px 18px rgba(20, 20, 23, .75); }
